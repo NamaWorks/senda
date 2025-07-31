@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
-    "start": "next start",
+    "start:local": "next start",
+    "start": "cross-env next start",
     "lint": "next lint"
   },
   "dependencies": {
