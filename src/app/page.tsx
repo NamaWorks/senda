@@ -6,7 +6,6 @@ import Partner from '@/components/elements/Home/Partner/Partner';
 export default async function Home() {
 
   const content = (await fetchData('home')).acf;
-  console.log(content.hero.video_background)
 
   return (
     <main id='home'>
@@ -46,23 +45,23 @@ export default async function Home() {
             {content.about.alex_description}
           </p>
           <div className="home__about__founder__picture">
-            <Image src={content.about.alex_image.link} alt={content.about.alex_image.alt} fill={true} ></Image>
+            <Image src={content.about.alex_image.link} alt={content.about.alex_image.alt_text} fill={true} ></Image>
           </div>
         </div>
       </section>
 
       <section className="home__partners">
         {
-          // Object.keys(content.partners.brands).map((brand, i) => {
-            // return (
-              // <Partner 
-              //   brandName={content.partners.brands[brand].name} 
-              //   brandLogo={content.partners.brands[brand].logo} 
-              //   backgroundImage={content.partners.brands[brand].image_background.id} 
-              //   i={i} key={`home_partners_brand_${i}`}
-              // />
-            // )
-          // })
+          Object.keys(content.partners.brands).map((brand, i) => {
+            return (
+              <Partner 
+                brandName={content.partners.brands[brand].name} 
+                brandLogo={typeof content.partners.brands[brand].logo === 'number' ? content.partners.brands[brand].logo : content.partners.brands[brand].logo.id} 
+                backgroundImage={typeof content.partners.brands[brand].image_background === 'number' ? content.partners.brands[brand].image_background : content.partners.brands[brand].image_background.id} 
+                i={i} key={`home_partners_brand_${i}`}
+              />
+            )
+          })
         }
 
         <h3>{content.partners.heading}</h3>

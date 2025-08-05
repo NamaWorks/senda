@@ -1,6 +1,12 @@
+"use server";
+
+import { fetchMedia } from "@/utils/actions/serverActions/actions";
 import Image from "next/image";
 
-export default function Partner ({ brandName, brandLogo, backgroundImage, i }: {brandName: string, brandLogo: number | string | undefined, backgroundImage: number | string | undefined, i: number}) {
+export default async function Partner ({ brandName, brandLogo, backgroundImage, i }: {brandName: string, brandLogo: number | string | undefined, backgroundImage: number | string | undefined, i: number}) {
+
+  const brandLogoWpImage = await fetchMedia(brandLogo ? brandLogo : '');
+  const backgroundImageWpImage = await fetchMedia(backgroundImage ? backgroundImage : '');
 
   return (
     <div
@@ -9,12 +15,22 @@ export default function Partner ({ brandName, brandLogo, backgroundImage, i }: {
     >
       <h4>{brandName}</h4>
       <div className="home__partners__brand__logo">
-        <p>{brandLogo}</p>
-        {/* <Image src={brandLogo}/>   */}
+        <Image 
+          src={brandLogoWpImage?.guid.rendered as string} 
+          // fill={true} 
+          height={100}
+          width={100}
+          alt={brandLogoWpImage?.alt_text as string || brandLogoWpImage?.title.rendered as string}
+        />
       </div>
       <div className="home__partners__brand__image">
-        <p>{backgroundImage}</p>
-        {/* <Image src={brandLogo}/>   */}
+        <Image 
+          src={backgroundImageWpImage?.guid.rendered as string} 
+          // fill={true} 
+          height={100}
+          width={100}
+          alt={backgroundImageWpImage?.alt_text as string || brandLogoWpImage?.title.rendered as string}
+        />
       </div>
     </div>
   )
