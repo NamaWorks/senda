@@ -1,27 +1,27 @@
 export interface WPImageACF {
   ID: number;
   id: number;
-  title?: string;
-  filename?: string;
-  filesize?: number;
-  url?: string;
+  title: string;
+  filename: string;
+  filesize: number;
+  url: string;
   link: string;
-  alt?: string;
-  author?: string;
-  description?: string;
-  caption?: string;
-  name?: string;
-  status?: string;
-  uploaded_to?: number;
-  date?: string;
-  modified?: string;
-  menu_order?: number;
-  mime_type?: string;
-  type?: string;
-  subtype?: string;
-  icon?: string;
-  width?: number;
-  height?: number;
+  alt: string;
+  author: string;
+  description: string;
+  caption: string;
+  name: string;
+  status: string;
+  uploaded_to: number;
+  date: string;
+  modified: string;
+  menu_order: number;
+  mime_type: string;
+  type: string;
+  subtype: string;
+  icon: string;
+  width: number;
+  height: number;
   sizes: ImageSizesACF;
   guid: {
     rendered: string;
@@ -261,7 +261,24 @@ interface WPImageMeta {
 };
 
 export interface PartnerInterface {
-  image_background: WPImage | number,
-  logo: WPImage | number,
+  image_background: number,
+  logo: number,
   name: string,
+};
+
+export interface CtaInterface {
+    title: string,
+    url: string,
+    target: string,
+};
+
+export interface FaqInterface {
+  question: string,
+  answer: string,
+};
+
+export interface LinkInterface {
+    title: string,
+    url: string,
+    target: string,
 };
