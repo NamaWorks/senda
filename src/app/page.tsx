@@ -1,3 +1,5 @@
+import './page.scss'
+
 import { fetchData, fetchMedia } from '@/utils/actions/serverActions/actions';
 import './page.scss';
 import Image from 'next/image';

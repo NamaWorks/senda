@@ -1,5 +1,7 @@
 "use client";
 
+import "./page.scss";
+
 import { use } from "react";
 
 export default function Experience({ params }) {

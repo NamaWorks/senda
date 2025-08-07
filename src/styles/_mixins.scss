@@ -1,0 +1,13 @@
+@forward "./_globals";
+// @use "./_globals" as globals;
+
+@mixin testTitle-000{
+  font-size: 2rem;
+  text-align: center;
+  color: $primary-color;
+  // color: globals.$primary-color;
+};
+
+@mixin testTitle-001 {
+  @include testTitle-000;
+}

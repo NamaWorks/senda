@@ -1,5 +1,7 @@
 "use client";
 
+import "./Nav.scss";
+
 import { useState } from "react";
 
 export default function Nav(){

@@ -1,3 +1,5 @@
+import "./page.scss";
+
 export default function Experiences() {
 
   return (
