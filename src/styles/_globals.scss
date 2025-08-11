@@ -2,13 +2,22 @@ img{
   display: none;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
 // colors
-$primary-color: #0073e6;
-$secondary-color: #f2f2f2;
+  // brand
+$senda-color-orange: #ff074c;
+$senda-color-blue: #b0c0da;
+  // background
+$senda-color-white-100: #fff;
+$senda-color-white-200: #f9f9f9;
+$senda-color-blue-100: #d9e2eb;
+  //texts
+$senda-color-black-050: rgba(51, 51, 51, 50);
+$senda-color-black-100: #333;
 
 // spacing
 $spacing-unit: 1rem;
 
 // typography
-$font-stack: 'Helvetica Neue', sans-serif;
-$font-size-base: 16px;
+$font-family-main: 'Inter', sans-serif;

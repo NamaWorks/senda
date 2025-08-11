@@ -1,13 +1,234 @@
 @forward "./_globals";
 // @use "./_globals" as globals;
+// @forward "./typography";
+@forward "./variables";
 
-@mixin testTitle-000{
-  font-size: 2rem;
-  text-align: center;
-  color: $primary-color;
-  // color: globals.$primary-color;
+// texts
+
+@mixin texts-general {
+  font-family: $font-family-main;
+  text-align: left;
+  font-style: normal;
+  color: $senda-color-blue;
+  line-height: 90%; /* 7.875rem */
+  font-weight: 400;
 };
 
-@mixin testTitle-001 {
-  @include testTitle-000;
-}
+@mixin titles-general {
+  @include texts-general;
+  font-weight: 800;
+  text-transform: uppercase;
+};
+
+@mixin desktop-title-h1 {
+  @include titles-general;
+  font-size: 8.75rem;
+};
+
+@mixin desktop-title-h2 {
+  @include titles-general;
+  font-weight: 400;
+  font-size: 2.5rem;
+  line-height: 100%;
+  text-transform: none;
+  letter-spacing: -0.1rem;
+};
+
+@mixin desktop-title-h3 {
+  @include titles-general;
+  font-weight: 600;
+  font-size: 3rem;
+  line-height: 100%;
+  letter-spacing: -0.12rem;
+};
+
+@mixin desktop-title-h4 {
+  @include titles-general;
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 100%;
+  letter-spacing: -0.08rem;
+  text-transform: none;
+};
+
+@mixin desktop-title-h5 {
+  @include titles-general;
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 100%;
+  letter-spacing: -0.08rem;
+};
+
+@mixin desktop-title-h6 {
+  @include titles-general;
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 90%;
+};
+
+@mixin desktop-title-h7 {
+  @include titles-general;
+  font-weight: 700;
+  font-size: 0.875rem;
+  line-height: 120%;
+  letter-spacing: 0.03rem;
+  text-transform: none;
+};
+
+@mixin desktop-title-h8 {
+  @include titles-general;
+  font-weight: 400;
+  font-size: 0.75rem;
+  line-height: 120%;
+  letter-spacing: 0.03rem;
+};
+
+@mixin desktop-footer-marquee {
+  @include titles-general;
+  font-size: 8rem;
+};
+
+
+@mixin mobile-title-h1 {
+  @include titles-general;
+  font-size: 3rem;
+  line-height: 90%;
+};
+
+@mixin mobile-title-h2 {
+  @include titles-general;
+  font-weight: 400;
+  font-size: 2.25rem;
+  line-height: 100%;
+  text-transform: none;
+};
+
+@mixin mobile-title-h3 {
+  @include titles-general;
+  font-weight: 600;
+  font-size: 2rem;
+  line-height: 120%;
+  letter-spacing: -0.08rem;
+};
+
+@mixin mobile-title-h4 {
+  @include titles-general;
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 120%;
+  letter-spacing: -0.08rem;
+  text-transform: none;
+};
+
+@mixin mobile-title-h5 {
+  @include titles-general;
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 100%;
+  letter-spacing: -0.0rem;
+};
+
+@mixin mobile-title-h6 {
+  @include titles-general;
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 90%;
+};
+
+@mixin mobile-title-h7 {
+  @include titles-general;
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 110%;
+  letter-spacing: 0.0875rem;
+  text-transform: none;
+};
+
+@mixin mobile-title-h8 {
+  @include titles-general;
+  font-weight: 400;
+  font-size: 0.75rem;
+  line-height: 120%;
+  letter-spacing: -0.0rem;
+};
+
+@mixin mobile-footer-marquee {
+  @include titles-general;
+  font-size: 4rem;
+  line-height: 90%;
+  font-weight: 800;
+};
+
+@mixin copy-general {
+  @include texts-general;
+  line-height: 120%;
+};
+
+@mixin desktop-copy-c1 {
+  @include copy-general;
+  font-size: 1.25rem;
+  letter-spacing: -0.05rem;
+};
+
+@mixin desktop-copy-c2 {
+  @include copy-general;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+};
+
+@mixin desktop-copy-c3 {
+  @include copy-general;
+  font-size: 4rem;
+  line-height: 110%;
+  letter-spacing: -0.16rem;
+};
+
+@mixin desktop-copy-c4 {
+  @include copy-general;
+  font-size: 2.25rem;
+  line-height: 120%;
+  letter-spacing: -0.09rem;
+};
+
+@mixin desktop-buttons {
+  @include copy-general;
+  font-size: 1rem;
+  line-height: 90%;
+  text-transform: uppercase;
+};
+
+@mixin mobile-copy-c1 {
+  @include copy-general;
+  font-size: 1.25rem;
+  letter-spacing: -0.0rem;
+  line-height: 100%;
+  font-weight: 500;
+};
+
+@mixin mobile-copy-c2 {
+  @include copy-general;
+  font-size: 1rem;
+  text-transform: uppercase;
+};
+
+@mixin mobile-copy-c3 {
+  @include copy-general;
+  font-size: 2.5rem;
+  line-height: 110%;
+  letter-spacing: -0.1rem;
+};
+
+@mixin mobile-copy-c4 {
+  @include copy-general;
+  font-size: 1.5rem;
+  line-height: 120%;
+  letter-spacing: -0.06rem;
+};
+
+@mixin mobile-buttons {
+  @include copy-general;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 90%;
+  text-transform: uppercase;
+};
