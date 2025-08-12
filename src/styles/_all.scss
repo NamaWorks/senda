@@ -1,4 +1,5 @@
-@forward "./mixins";
-@forward "./typography";
-@forward "./variables";
-@forward "./globals";
+@forward "./_reset";
+@forward "./_globals";
+@forward "./_variables";
+@forward "./_typography";
+@forward "./_mixins";

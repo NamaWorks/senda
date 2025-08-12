@@ -1,3 +1,4 @@
+import '../styles/_all.scss'
 import './page.scss'
 
 import { fetchData, fetchMedia } from '@/utils/actions/serverActions/actions';
@@ -16,11 +17,13 @@ export default async function Home() {
     <main id='home'>
 
       <section className="home__hero">
-        <h2 className='home__hero__preheading'>{homeData.hero.pre_h1}</h2>
-        <h1 className='home__hero__heading'>{homeData.hero.heading_h1}</h1>
-        <h2 className='home__hero__postheading'>{homeData.hero.post_h1}</h2>
+        <div className='home__hero__texts'>
+          <h2 className='home__hero__texts__preheading'>{homeData.hero.pre_h1}</h2>
+          <h1 className='home__hero__texts__heading'>{homeData.hero.heading_h1}</h1>
+          <h2 className='home__hero__texts__postheading'>{homeData.hero.post_h1}</h2>
+        </div>
 
-        <video loop autoPlay muted playsInline controls width="720">
+        <video loop autoPlay muted playsInline width="720">
           <source src={homeData.hero.video_background} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
@@ -28,11 +31,16 @@ export default async function Home() {
       </section>
 
       <section className="home__claim">
-        <p className="home__claim__coordinates">{homeData.claim.coordinates}</p>
-        <p className="home__claim__text">
-          {homeData.claim.main_claim}
-          {/* pending to add the image span */}
-        </p>
+        <div className="home__claim__top-mountains">
+          {/* pending to add the mountain svg */}
+        </div>
+        <div className='home__claim__texts'>
+          <p className="home__claim__texts__coordinates">{homeData.claim.coordinates}</p>
+          <p className="home__claim__texts__text">
+            {homeData.claim.main_claim}
+            {/* pending to add the image span */}
+          </p>
+        </div>
       </section>
 
       <section className="home__experiences">

@@ -12,9 +12,6 @@ export default async function Footer(){
   const logoData = await fetchMedia(content.acf.footer?.logo as number);
   const imageDirectionData = await fetchMedia(content.acf.footer?.image as number);
 
-  console.log(content.acf.footer)
-
-
   return (
     <footer>
       <div className="footer__divider footer__brand">

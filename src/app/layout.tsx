@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 // import { Geist_Mono } from "next/font/google";
 
 import "../styles/_all.scss";
+import "./layout.scss";
 
 import Footer from "@/components/elements/Footer/Footer";
 import Nav from "@/components/elements/Nav/Nav";
