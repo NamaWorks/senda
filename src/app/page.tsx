@@ -17,10 +17,15 @@ export default async function Home() {
     <main id='home'>
 
       <section className="home__hero">
-        <div className='home__hero__texts'>
-          <h2 className='home__hero__texts__preheading'>{homeData.hero.pre_h1}</h2>
-          <h1 className='home__hero__texts__heading'>{homeData.hero.heading_h1}</h1>
-          <h2 className='home__hero__texts__postheading'>{homeData.hero.post_h1}</h2>
+
+        <div className="home__hero__top">
+          <div className='home__hero__texts'>
+            <h2 className='home__hero__texts__preheading'>{homeData.hero.pre_h1}</h2>
+            <h1 className='home__hero__texts__heading'>{homeData.hero.heading_h1}</h1>
+            <h2 className='home__hero__texts__postheading'>{homeData.hero.post_h1}</h2>
+          </div>
+          
+          <div className="home__hero__square"></div>
         </div>
 
         <video loop autoPlay muted playsInline width="720">
@@ -28,12 +33,14 @@ export default async function Home() {
           Your browser does not support the video tag.
         </video>
 
+        <div className="home__hero__top-mountains">
+          <Image src="https://moona.dev/senda/wp-content/uploads/2025/08/claim-top-blend.svg" alt="top of a mountain illustration" width={1512} height={244}/>
+          <Image className='blend-difference' src="https://moona.dev/senda/wp-content/uploads/2025/08/claim-top.svg" alt="top of a mountain illustration" width={1512} height={241}/>
+        </div>
+
       </section>
 
       <section className="home__claim">
-        <div className="home__claim__top-mountains">
-          {/* pending to add the mountain svg */}
-        </div>
         <div className='home__claim__texts'>
           <p className="home__claim__texts__coordinates">{homeData.claim.coordinates}</p>
           <p className="home__claim__texts__text">
