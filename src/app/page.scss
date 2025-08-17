@@ -2,10 +2,6 @@
 @use "../styles/_typography.scss" as typography;
 @use "../styles/_globals.scss" as globals;
 
-img {
-  display: none
-}
-
 #home {
   @include mixins.flex-center;
   flex-direction: column;
@@ -99,6 +95,7 @@ img {
 
     img {
       position: absolute;
+      scale: 1.1;
     }
 
     :first-child {
@@ -108,7 +105,85 @@ img {
 };
 
 .home__claim {
-  width: 100%;
-  height: 100%;
-  background-color: globals.$senda-color-white-200;
+  position: relative;
+  
+  .home__claim__texts {
+    @include mixins.flex-center;
+    flex-direction: column;
+    padding: globals.$padding-general-100 ;
+
+    .home__claim__texts__coordinates {
+      @include typography.desktop-title-h8;
+      color: globals.$senda-color-black-100;
+      position: absolute;
+      left: globals.$padding-general-100;
+      top: calc(globals.$padding-general-100 + 2rem);
+    };
+
+    .home__claim__texts__text {
+      @include typography.desktop-copy-c3;
+      color: globals.$senda-color-black-100;
+      text-indent: 50%;
+    };
+  };
+};
+
+// Need to prepare the experiences
+
+.home__about {
+  @include mixins.flex-center;
+  flex-direction: column;
+  padding: globals.$padding-general-100 globals.$padding-general-100;
+  background-color: globals.$senda-color-blue-100;
+  gap: globals.$gap-general-200;
+
+  .home__about__title {
+    @include mixins.flex-center;
+    @include typography.desktop-title-h3;
+    color: globals.$senda-color-black-100;
+    flex-direction: column;
+
+    .home__about__title__heading-a {
+      align-self: flex-start;
+      width: 40%
+    };
+
+    .home__about__title__heading-b {
+      align-self: flex-end;
+      width: 65%;
+    };
+  };
+
+  .home__about__founder {
+    @include mixins.flex-center;
+    align-items: end;
+    gap: globals.$gap-general-010;
+    justify-content: flex-end;
+
+    .home__about__founder__text {
+      @include typography.desktop-copy-c1;
+      color: globals.$senda-color-black-100;
+      text-align: end;
+      text-align: justify;
+      text-align-last: right;
+      width: 25%;
+      min-width: 250px;
+    };
+
+    .home__about__founder__picture {
+      @include mixins.flex-center;
+      height: 50dvh;
+      width: 40dvh;
+      min-width: 40dvh;
+      position: relative;
+      
+      img {
+        object-fit: cover;
+        height: 100%;
+        width: 100%
+      }
+    };
+  };
+
+  
 };

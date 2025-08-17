@@ -31,6 +31,7 @@
 
 @mixin desktop-title-h3 {
   @include titles-general;
+  // font-weight: 600;
   font-weight: 600;
   font-size: 3rem;
   line-height: 100%;
@@ -174,6 +175,7 @@
 
 @mixin desktop-copy-c3 {
   @include copy-general;
+  font-weight: 300;
   font-size: 4rem;
   line-height: 110%;
   letter-spacing: -0.16rem;

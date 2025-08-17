@@ -51,6 +51,7 @@ export default async function Home() {
       </section>
 
       <section className="home__experiences">
+        {/* We have the info for the climbing slide in the CMS */}
         {/* Here we should fetch the experiences data from the WP api in order to print it */}
       </section>
       
