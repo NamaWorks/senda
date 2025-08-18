@@ -1,8 +1,7 @@
-import '../styles/_all.scss'
-import './page.scss'
+import '../styles/_all.scss';
+import './page.scss';
 
 import { fetchData, fetchMedia } from '@/utils/actions/serverActions/actions';
-import './page.scss';
 import Image from 'next/image';
 import Partner from '@/components/elements/Home/Partner/Partner';
 import { pageElementDataType } from '@/utils/types';
@@ -69,24 +68,30 @@ export default async function Home() {
             <Image src={alexImage?.guid.rendered as string} alt={alexImage?.alt_text as string} fill={true}></Image>
           </div>
         </div>
+
       </section>
 
       <section className="home__partners">
-        {
-          Object.keys(homeData.partners.brands).map((brand, i) => {
-            return (
-              <Partner 
-                brandName={homeData.partners.brands[brand].name} 
-                brandLogo={homeData.partners.brands[brand].logo } 
-                backgroundImage={homeData.partners.brands[brand].image_background} 
-                i={i} key={`home_partners_brand_${i}`}
-              />
-            )
-          })
-        }
+        <div className="home__partners__top-mountains">
+          <Image className='blend-difference' src="https://moona.dev/senda/wp-content/uploads/2025/08/partners-top.svg" alt="top of a mountain illustration" width={1512} height={241}/>
+        </div>
+        <div className="home__partners__grid">
+            {
+              Object.keys(homeData.partners.brands).map((brand, i) => {
+                return (
+                  <Partner 
+                    brandName={homeData.partners.brands[brand].name} 
+                    brandLogo={homeData.partners.brands[brand].logo } 
+                    backgroundImage={homeData.partners.brands[brand].image_background} 
+                    i={i} key={`home_partners_brand_${i}`}
+                  />
+                )
+              })
+            }
 
-        <h3>{homeData.partners.heading}</h3>
-        <p>{homeData.partners.copy}</p>
+          <h3 className='home__partners__title home__partners__grid-item'>{homeData.partners.heading}</h3>
+          <p className='home__partners__copy home__partners__grid-item'>{homeData.partners.copy}</p>
+        </div>
       </section>
 
     </main>
