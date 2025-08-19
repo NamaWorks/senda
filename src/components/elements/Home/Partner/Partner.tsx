@@ -34,11 +34,13 @@ export default async function Partner ({ brandName, brandLogo, backgroundImage, 
       className="home__partners__brand home__partners__grid-item"
       id={`partner_${i}`}
     >
-      <h4>{brandName}</h4>
+      <h4 className="home__partners__brand__name">{brandName}</h4>
       <div className="home__partners__brand__logo">
         <Image 
           src={brandLogoWpImage?.guid.rendered as string} 
           fill={true} 
+          // height={400}
+          // width={600}
           alt={brandLogoWpImage?.alt_text as string || brandLogoWpImage?.title.rendered as string}
         />
       </div>

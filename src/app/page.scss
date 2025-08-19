@@ -224,6 +224,8 @@
     // height: calc(18dvw/3 * 1.75);
     // width: 18dvw;
     border: 1px solid red;
+    overflow: hidden;
+    position: relative;
   };
 
   #partner_0 {
@@ -231,11 +233,11 @@
   };
 
   #partner_1 {
-    grid-area: c;
+    grid-area: d;
   };
 
   #partner_2 {
-    grid-area: d;
+    grid-area: c;
   };
 
   #partner_3 {
