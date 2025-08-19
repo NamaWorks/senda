@@ -5,7 +5,7 @@
 #home {
   @include mixins.flex-center;
   flex-direction: column;
-  background-color: globals.$senda-color-white-200;
+  // background-color: globals.$senda-color-white-200;
 };
 
 .home__hero {
@@ -82,8 +82,6 @@
     object-fit: cover;
   };
 
-
-
   .home__hero__top-mountains {
     @include mixins.flex-center;
     align-items: end;
@@ -107,6 +105,7 @@
 
 .home__claim {
   position: relative;
+  background-color: globals.$senda-color-white-200;
   
   .home__claim__texts {
     @include mixins.flex-center;
@@ -190,18 +189,21 @@
 .home__partners {
   position: relative;
   width: 100%;
-  overflow: hidden;
+  padding-bottom: globals.$padding-general-100;
+  // overflow: hidden;
 
   .home__partners__top-mountains {
     position: absolute;
     // display: flex;
     // height: 100%;
-    // width: 100%;
+    width: 100%;
     cursor: none;
     pointer-events: none;
-    overflow: hidden;
+    // overflow: hidden;
+    overflow-x: hidden;
 
     img {
+      scale: 1.2;
       object-fit: contain;
       object-position: top left;
     };
@@ -223,9 +225,13 @@
   .home__partners__grid-item {
     // height: calc(18dvw/3 * 1.75);
     // width: 18dvw;
-    border: 1px solid red;
+    // border: 1px solid red;
+    @include mixins.flex-center;
     overflow: hidden;
     position: relative;
+    // background-color: globals.$senda-color-white-100;
+    border-radius: globals.$rounded-010;
+    // padding: globals.$padding-general-010;
   };
 
   #partner_0 {

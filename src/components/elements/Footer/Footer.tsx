@@ -14,6 +14,11 @@ export default async function Footer(){
 
   return (
     <footer>
+
+      <div className="footer__top-mountains">
+        <Image className='blend-difference' src="https://moona.dev/senda/wp-content/uploads/2025/08/footer-top.svg" alt="top of a mountain illustration" width={1512} height={241}/>
+      </div>
+
       <div className="footer__divider footer__brand">
         <div className="footer__brand__logo">
           <Image 
@@ -33,21 +38,24 @@ export default async function Footer(){
       </div>
 
       <div className="footer__divider footer__direction">
+        <div className="footer__direction__img">
           <Image 
             src={imageDirectionData?.guid.rendered as string} 
             alt={imageDirectionData?.alt_text as string}
             fill={true}
           />
-          <div className="footer__direction__text">
+        </div>
+
+          <div className="footer__direction__texts">
             {
               (content.acf.footer?.direction as string).split(/<br>/).map((line, i) => {
                 return (
-                  <p key={i}>{line}</p>
+                  <p className="footer__direction__text" key={i}>{line}</p>
                 )
               })
             }
-          </div>
           <p className="footer__direction__copyright">{ content.acf.footer?.copyright }</p>
+          </div>
       </div>
 
       <div className="footer__divider footer__contact">

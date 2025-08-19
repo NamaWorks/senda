@@ -22,7 +22,7 @@
 
 @mixin desktop-title-h2 {
   @include titles-general;
-  font-weight: 400;
+  font-weight: 300;
   font-size: 2.5rem;
   line-height: 100%;
   text-transform: none;
@@ -164,6 +164,7 @@
   @include copy-general;
   font-size: 1.25rem;
   letter-spacing: -0.05rem;
+  font-weight: 300;
 };
 
 @mixin desktop-copy-c2 {
