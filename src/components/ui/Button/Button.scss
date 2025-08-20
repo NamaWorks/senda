@@ -1,0 +1,29 @@
+@use "../../../styles/_mixins.scss" as mixins;
+@use "../../../styles/_globals.scss" as globals;
+
+.button-general {
+  @include mixins.flex-center;
+  background-color: transparent;
+  border: none;
+
+  .btn {
+    @include mixins.button-general;
+  };
+
+  .btn__icon {
+    @include mixins.flex-center;
+    padding: globals.$padding-general-012;
+    position: relative;
+
+    img{
+      object-fit: scale-down;
+      object-position: center;
+
+    };
+  };
+
+  .logo-icon {
+    background-color: globals.$senda-color-black-100;
+    border: none
+  };
+};

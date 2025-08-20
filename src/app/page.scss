@@ -91,6 +91,7 @@
     object-fit: cover;
     position: absolute;
     bottom: 0;
+    pointer-events: none;
 
     img {
       position: absolute;

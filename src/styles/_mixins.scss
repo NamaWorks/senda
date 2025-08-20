@@ -1,11 +1,21 @@
-@forward "./_globals";
+@use "./_globals" as globals;
 // @use "./_globals" as globals;
-@forward "./variables";
-@forward "./typography";
+@use "./_variables" as variables;
+@use "./_typography" as typography;
 
 @mixin flex-center {
   display: flex;
   justify-items: center;
   align-items: center;
   justify-content: center;
+};
+
+@mixin button-general {
+  @include flex-center;
+  @include typography.desktop-buttons;  
+  background-color: globals.$senda-color-white-50;
+  border: 1px solid globals.$senda-color-white-300;
+  border-radius: 10rem;
+  color: globals.$senda-color-black-100;
+  padding: globals.$padding-general-006 globals.$padding-general-012;
 };

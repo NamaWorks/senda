@@ -5,8 +5,10 @@
 $senda-color-orange: #ff974c;
 $senda-color-blue: #b0c0da;
   // background
+$senda-color-white-50: hsla(0, 0%, 100%, 0.88);
 $senda-color-white-100: #fff;
 $senda-color-white-200: #f9f9f9;
+$senda-color-white-300: #BFBFBF;
 $senda-color-blue-100: #d9e2eb;
   //texts
 $senda-color-black-050: rgba(51, 51, 51, 50);
@@ -15,7 +17,9 @@ $senda-color-black-100: #333;
 // spacing
 $spacing-unit: 1rem;
 
+$padding-general-006: 0.625rem;
 $padding-general-010: 1rem;
+$padding-general-012: 1.25rem;
 $padding-general-100: 6.25rem;
 
 $gap-general-010: 1rem;
