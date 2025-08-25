@@ -5,7 +5,9 @@
   @include mixins.flex-center;
   background-color: transparent;
   border: none;
-
+  cursor: pointer;
+  pointer-events: all;
+  
   .btn {
     @include mixins.button-general;
   };
