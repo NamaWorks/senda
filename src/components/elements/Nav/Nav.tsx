@@ -13,12 +13,11 @@ import {
 import Button from "@/components/ui/Button/Button";
 import Image from "next/image";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 export default function Nav() {
   const [toggled, setToggled] = useState<boolean>(false);
-  const [navData, setNavData] = useState<null | undefined | ComponentDataType>(
-    null
-  );
+  const [navData, setNavData] = useState<null | undefined | ComponentDataType>(null);
   const [imageA, setImageA] = useState<WPImage | undefined>(undefined);
   const [imageB, setImageB] = useState<WPImage | undefined>(undefined);
 
@@ -37,7 +36,7 @@ export default function Nav() {
     <nav>
       <div className="nav__permanent">
         <div className="nav__permanent__logo">
-          <Button fnc={test} icon={`logo`} />
+        <Button fnc={test} icon={`logo`}/>
         </div>
         <div className="nav__permanent__btn">
           <Button
@@ -74,11 +73,11 @@ export default function Nav() {
             <div className="nav__toggle__half nav__toggle__links">
 
               <div className="nav__toggle__half__side">
-                <p className="nav__toggle__half__side__links">{navData?.acf.nav_bar?.about.title}</p>
+                <Link href={navData?.acf.nav_bar?.about.url as string} className="nav__toggle__half__side__links">{navData?.acf.nav_bar?.about.title}</Link>
                 <div className="nav__toggle__half__side__navigation">
                   <Link
                     className="nav__toggle__half__side__links"
-                    href={navData?.acf.nav_bar?.climbing.url as string}
+                    href={"experiences/" + navData?.acf.nav_bar?.climbing.url as string}
                   >
                     {navData?.acf.nav_bar?.climbing.title}
                   </Link>
@@ -136,5 +135,5 @@ export default function Nav() {
 }
 
 function test(): void {
-  console.log("test");
+  redirect("/")
 }

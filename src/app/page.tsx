@@ -23,7 +23,6 @@ export default async function Home() {
             <h1 className='home__hero__texts__heading'>{homeData.hero.heading_h1}</h1>
             <h2 className='home__hero__texts__postheading'>{homeData.hero.post_h1}</h2>
           </div>
-          
           <div className="home__hero__square"></div>
         </div>
 

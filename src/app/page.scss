@@ -90,12 +90,12 @@
     overflow: hidden;
     object-fit: cover;
     position: absolute;
-    bottom: 0;
+    bottom: -2;
     pointer-events: none;
 
     img {
       position: absolute;
-      scale: 1.1;
+      scale: 1.0;
     }
 
     :first-child {

@@ -9,6 +9,7 @@ export type pageElementDataType =
 export type PageDataType = {
   id: number,
   acf: HomeDataType,
+  // acf: HomeDataType | AboutDataType,
 };
 
 // home data type
@@ -53,6 +54,11 @@ type HomePartnersDataType = {
   heading: string,
   copy: string,
 };
+
+// about page data type
+// type AboutDataType = {
+  
+// };
 
 // components data type
 export type ComponentsDataType =
