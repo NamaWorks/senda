@@ -4,12 +4,13 @@ import './page.scss';
 import { fetchData, fetchMedia } from '@/utils/actions/serverActions/actions';
 import Image from 'next/image';
 import Partner from '@/components/elements/Home/Partner/Partner';
-import { pageElementDataType } from '@/utils/types';
+import { HomeDataType, pageElementDataType } from '@/utils/types';
 
 export default async function Home() {
 
   const content = (await fetchData('home')) as pageElementDataType;
-  const homeData = content[0].acf;
+  const homeData = content[0].acf as HomeDataType;
+  console.log(content[0].acf)
   const alexImage = await fetchMedia(homeData.about.alex_image);
 
   return (

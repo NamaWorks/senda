@@ -8,8 +8,8 @@ export type pageElementDataType =
 
 export type PageDataType = {
   id: number,
-  acf: HomeDataType,
-  // acf: HomeDataType | AboutDataType,
+  // acf: HomeDataType,
+  acf: HomeDataType | AboutDataType,
 };
 
 // home data type
@@ -56,9 +56,41 @@ type HomePartnersDataType = {
 };
 
 // about page data type
-// type AboutDataType = {
-  
-// };
+export type AboutDataType = {
+  hero: AboutHeroDataType,
+  values: AboutValuesDataType,
+  video: AboutVideoDataType
+};
+
+type AboutHeroDataType = {
+  heading: string,
+  span_image: number,
+  images: {
+    image_01: number,
+    image_02: number,
+    image_03: number
+  },
+};
+
+type AboutValuesDataType = {
+  texts: {
+    copy: string,
+    heading: string
+  },
+  items: {
+    [key: string]: {
+      index: string,
+      text: string
+    }
+  }
+};
+
+type AboutVideoDataType = {
+  heading: string,
+  play_button: string,
+  play_icon: number,
+  video_background: number
+};
 
 // components data type
 export type ComponentsDataType =
