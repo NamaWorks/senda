@@ -28,16 +28,14 @@ export default function About() {
           fetchMedia(aboutData?.hero.images[image as keyof typeof aboutData.hero.images] as number)
         )
       );
-      setImagesToPrint(imagesArr);
+      setImagesToPrint(imagesArr.filter((img): img is WPImage => img !== undefined));
     }
     if (aboutData?.hero.images) getMedia();
   },[aboutData]);
-  
-  console.log(imagesToPrint)
-  
+
   return (
    <>
-    <main className="about">
+    <main className="about" id="about">
 
       <section className="about__hero">
         <div className="about__hero__container">
@@ -61,6 +59,13 @@ export default function About() {
         </div>
       </section>
 
+      <section className="about__video">
+        <video loop autoPlay muted playsInline width="720">
+          <source src={aboutData?.video.video_background as string} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </section>
+
       <section className="about__values">
         <div className="about__values__container">
           {
@@ -73,6 +78,15 @@ export default function About() {
               )
             })
           }
+        </div>
+
+        <div className="about__values__texts">
+          <div className="about__values__texts__heading">
+            <p>{aboutData?.values.texts.heading}</p>
+          </div>
+          <div className="about__values__texts__copy">
+            <p>{aboutData?.values.texts.copy}</p>
+          </div>
         </div>
       </section>
 

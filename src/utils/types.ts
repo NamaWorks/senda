@@ -89,7 +89,7 @@ type AboutVideoDataType = {
   heading: string,
   play_button: string,
   play_icon: number,
-  video_background: number
+  video_background: string
 };
 
 // components data type
