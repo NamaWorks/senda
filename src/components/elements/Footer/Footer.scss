@@ -10,6 +10,7 @@ footer {
   background-color: globals.$senda-color-black-100;
   padding: calc(globals.$padding-general-100/2) 0;
   gap: globals.$gap-general-025;
+  margin-top: globals.$padding-general-100;
 
   .footer__top-mountains {
     @include mixins.flex-center;

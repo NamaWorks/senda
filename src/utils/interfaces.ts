@@ -88,21 +88,9 @@ export interface WPImage {
     file: string;
     filesize: number;
     sizes: {
-      thumbnail: {
-        file: string;
-        width: number;
-        height: number;
-        filesize: number;
-        mime_type: string;
-        source_url: string;
-      };
-      full: {
-        file: string;
-        width: number;
-        height: number;
-        mime_type: string;
-        source_url: string;
-      };
+      thumbnail: ImageSize;
+      full: ImageSize;
+      medium: ImageSize;
     };
     image_meta: {
       aperture: string;
@@ -143,6 +131,15 @@ export interface WPImage {
       href: string;
     }[];
   };
+}
+
+interface ImageSize {
+  file: string;
+  width: number;
+  height: number;
+  mime_type: string;
+  source_url: string;
+  filesize?: number; // Optional, only present in some sizes
 }
 
 interface WPImageMeta {

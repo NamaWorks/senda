@@ -47,23 +47,27 @@ export default function About() {
 
       <section className="about__images">
         <div className="about__images__item">
-          <Image src={imagesToPrint && imagesToPrint[0].guid.rendered || '#'} alt={imagesToPrint && imagesToPrint[0].alt_text || '#'} fill={true}/>
+          <Image src={imagesToPrint && imagesToPrint[0].media_details.sizes.medium.source_url || '#'} alt={imagesToPrint && imagesToPrint[0].alt_text || '#'} fill={true}/>
         </div>
         <div className="about__images__item empty__item">
         </div>
         <div className="about__images__item">
-          <Image src={imagesToPrint && imagesToPrint[1].guid.rendered || '#'} alt={imagesToPrint && imagesToPrint[1].alt_text || '#'} fill={true}/>
+          <Image src={imagesToPrint && imagesToPrint[1].media_details.sizes.medium.source_url || '#'} alt={imagesToPrint && imagesToPrint[1].alt_text || '#'} fill={true}/>
         </div>
         <div className="about__images__item">
-          <Image src={imagesToPrint && imagesToPrint[2].guid.rendered || '#'} alt={imagesToPrint && imagesToPrint[2].alt_text || '#'} fill={true}/>
+          <Image src={imagesToPrint && imagesToPrint[2].media_details.sizes.medium.source_url || '#'} alt={imagesToPrint && imagesToPrint[2].alt_text || '#'} fill={true}/>
         </div>
       </section>
 
       <section className="about__video">
         <video loop autoPlay muted playsInline width="720">
-          <source src={aboutData?.video.video_background as string} type="video/mp4" />
+          <source src={'https://moona.dev/senda/wp-content/uploads/2025/09/856131-hd_1920_1080_30fps-1-1-1.webm'} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
+        <div className="about__video__overlay"></div>
+        <div className="about__video__texts">
+          <p>{aboutData?.video.heading}</p>
+        </div>
       </section>
 
       <section className="about__values">

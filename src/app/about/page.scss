@@ -2,8 +2,9 @@
 @use "../../styles/_typography.scss" as typography;
 @use "../../styles/_globals.scss" as globals;
 
-img {
-  display: none;
+
+body {
+  background-color: globals.$senda-color-white-200;
 };
 
 #about {
@@ -28,12 +29,13 @@ img {
 
 .about__images {
   @include mixins.flex-center;
-  padding:0 globals.$padding-general-100;
+  // padding:0 globals.$padding-general-100;
   flex-direction: row;
   flex-wrap: nowrap;
   height: 25dvw;
   position: relative;
   top: 80px;
+  z-index: 1;
 
   .empty__item {
     background-color: globals.$senda-color-black-100;
@@ -62,17 +64,116 @@ img {
 
 .about__video {
   @include mixins.flex-center;
-  width: 100%;
-  height: 100%;
+  // width: 100%;
+  // height: 100%;
+  min-height: 100dvh;
+  min-width: 100dvw;
   position: relative;
   top: -80px;
-  z-index: -1;
+  z-index: 0;
+
+  .about__video__overlay {
+    background-color: black;
+    opacity: .45;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+  };
+
+  .about__video__texts {
+    z-index: 1;
+    width: 65%;
+    
+    p {
+      @include typography.desktop-copy-c4;
+      font-weight: 300;
+      text-align: center;
+      color: globals.$senda-color-white-100;
+    };
+  };
   
   video {
+    position: absolute;
     display: flex;
+    top: 0;
     height: 100%;
     width: 100%;
     object-fit: cover;
-    background-color: red
+    z-index: 0;
+  };
+};
+
+.about__values {
+  @include mixins.flex-center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  padding: 0 globals.$padding-general-100;
+  margin-bottom: globals.$padding-general-050;
+
+  .about__values__container {
+    @include mixins.flex-center;
+    flex-wrap: nowrap;
+    height: 12dvh;
+    align-items: center;
+    position: relative;
+    top: -12dvh;
+    
+    .about__values__value {
+      @include mixins.flex-center;
+      align-items: start;
+      background-color: globals.$senda-color-white-200;
+      height: 100%;
+      width: 100%;
+      position: relative;
+      padding: globals.$padding-general-006;
+      // padding-bottom: globals.$padding-general-050;
+      
+      
+      @for $i from 1 through 4 {
+        &:nth-child(#{$i}){
+          top: #{($i - 1) * -30}px;
+          // padding-bottom: #{($i - 1) * globals.$padding-general-050};
+        }
+      };
+      
+      .value__index {
+        @include typography.desktop-title-h8;
+        color: globals.$senda-color-black-100;
+        font-size: 0.625rem;
+      };
+
+      .value__text {
+        @include typography.desktop-title-h8;
+        color: globals.$senda-color-black-100;
+      };
+    };
+  };
+
+  .about__values__texts {
+    @include mixins.flex-center;
+    flex-direction: column;
+    gap: globals.$gap-general-025;
+    
+    .about__values__texts__heading {
+      width: 65%;
+      p {
+        @include typography.desktop-copy-c4;
+        color:  globals.$senda-color-black-100;
+        text-align: justify;
+      };
+    };
+    
+    .about__values__texts__copy {
+      width: 65%;
+      @include mixins.flex-center;
+      justify-content: end;
+      p {
+        @include typography.desktop-copy-c1;
+        width: 50%;
+        color: globals.$senda-color-black-100;
+        text-align: justify;
+      };
+    };
   };
 };
