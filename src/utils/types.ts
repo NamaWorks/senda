@@ -1,6 +1,6 @@
 import { CtaInterface, FaqInterface, LinkInterface, PartnerInterface, WPImage } from "./interfaces";
 
-export type ApiResponseType = ComponentsDataType | pageElementDataType;
+export type ApiResponseType = ComponentsDataType | pageElementDataType | ExperienceDataType[];
 
 export type pageElementDataType = 
   Array<PageDataType>
@@ -92,6 +92,57 @@ type AboutVideoDataType = {
   video_background: string
 };
 
+ // Experiences page data type
+
+export type ExperienceDataType = {
+  id: number;
+  acf: {
+    home: {
+      heading: string;
+      description: string;
+      image: boolean;
+      tab: {
+        name: string;
+        number: string;
+      };
+    };
+    hero: {
+      heading: string;
+      description: string;
+      image: boolean;
+    };
+    location: {
+      main_: string;
+      small_copy: string;
+      video: string;
+    };
+    itinerary: {
+      morning: {
+        heading: string;
+        description: string;
+        icon: string;
+      };
+      lunch: {
+        heading: string;
+        description: string;
+        icon: string;
+      };
+      activity: {
+        heading: string;
+        description: string;
+        icon: string;
+      };
+      included: {
+        heading: string;
+        description: string;
+        icon: string;
+      };
+    };
+    title: string;
+  };
+};
+
+
 // components data type
 export type ComponentsDataType =
   Array<ComponentDataType>
@@ -139,3 +190,21 @@ type NavDataType = {
 type FaqDataType = {
   [key: `faq_${string}`]: FaqInterface;
 };
+
+ // Contexts types
+
+ export type ExperiencesContextType = {
+  experiencesData?: (ExperienceDataType|undefined)[] | undefined,
+  setExperiencesData?: React.Dispatch<React.SetStateAction<((ExperienceDataType|undefined)[] | undefined)>>,
+  selectedExperience?: string | undefined,
+  setSelectedExperience?: React.Dispatch<React.SetStateAction<string| undefined>>
+ };
+
+ export type ComponentsContextType = {
+  footerData: ComponentDataType | undefined,
+  setFooterData: React.Dispatch<React.SetStateAction<ComponentDataType | undefined>>,
+  faqData: ComponentDataType | undefined,
+  setFaqData: React.Dispatch<React.SetStateAction<ComponentDataType | undefined>>,
+  navData: ComponentDataType | undefined,
+  setNavData: React.Dispatch<React.SetStateAction<ComponentDataType | undefined>>,
+ };

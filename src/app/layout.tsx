@@ -5,6 +5,8 @@ import "./layout.scss";
 import Footer from "@/components/elements/Footer/Footer";
 import Nav from "@/components/elements/Nav/Nav";
 import SmoothScrollProvider from "@/utils/providers/SmoothScrollProvider";
+import ExperiencesContextProvider from "@/utils/contexts/context_providers/ExperiencesContextProvider";
+import ComponentsContextProvider from "@/utils/contexts/context_providers/ComponentsContextProvider";
 
 export const metadata: Metadata = {
   title: "Senda - Adventure",
@@ -14,6 +16,8 @@ export const metadata: Metadata = {
 export default function RootLayout({children,}: Readonly<{children: React.ReactNode;}>) {
   return (
   <SmoothScrollProvider>
+  <ExperiencesContextProvider>
+  <ComponentsContextProvider>
     <html lang="en">
       <body className={`body`}>
         <Nav/>
@@ -21,6 +25,8 @@ export default function RootLayout({children,}: Readonly<{children: React.ReactN
         <Footer/>
       </body>
     </html>
+  </ComponentsContextProvider>
+  </ExperiencesContextProvider>
   </SmoothScrollProvider>
   );
 }

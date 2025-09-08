@@ -3,7 +3,7 @@
 import { ReactNode, useEffect } from 'react';
 import { smoothScroll } from "../actions/clientActions/animations/smoothScroll";
 
-const SmoothScrollProvider = ({children}: {children: ReactNode}) => {
+export default function SmoothScrollProvider ({children}: {children: ReactNode})  {
 
   useEffect(() => {
     smoothScroll()
@@ -11,9 +11,7 @@ const SmoothScrollProvider = ({children}: {children: ReactNode}) => {
 
   return (
     <>
-    {children}
+      {children}
     </>
   )
 };
-
-export default SmoothScrollProvider;
