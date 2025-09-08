@@ -27,7 +27,7 @@ export default function Footer(){
 
   useEffect(()=>{
     if(footerData === undefined){
-      getData()
+        getData()
     }
 
     async function getData(){
@@ -40,7 +40,7 @@ export default function Footer(){
   },[footerData, setFooterData, setLogoData])
 
   return (
-    footerData &&
+    footerData && logoData && imageDirectionData &&
     <footer>
 
       <div className="footer__top-mountains">

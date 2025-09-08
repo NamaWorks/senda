@@ -14,6 +14,7 @@ import Button from "@/components/ui/Button/Button";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import ExperienceButton from "@/components/ui/ExperienceButton/ExperienceButton";
 
 export default function Nav() {
   const [toggled, setToggled] = useState<boolean>(false);
@@ -84,26 +85,14 @@ export default function Nav() {
 
                   <ul>
                     <li className="nav__toggle__half__side__links">
-                      <Link
-                        href={navData?.acf.nav_bar?.hiking.url as string}
-                      >
-                        {navData?.acf.nav_bar?.hiking.title}
-                      </Link>
+                      <ExperienceButton experience={navData?.acf.nav_bar?.hiking.title.replaceAll('+',"") as string} />
                     </li>
 
                     <li className="nav__toggle__half__side__links">
-                      <Link
-                        href={navData?.acf.nav_bar?.yoga.url as string}
-                      >
-                        {navData?.acf.nav_bar?.yoga.title}
-                      </Link>
+                      <ExperienceButton experience={navData?.acf.nav_bar?.yoga.title.replaceAll('+',"") as string} />
                     </li>
                     <li className="nav__toggle__half__side__links">
-                      <Link
-                        href={navData?.acf.nav_bar?.photography.url as string}
-                      >
-                        {navData?.acf.nav_bar?.photography.title}
-                      </Link>
+                      <ExperienceButton experience={navData?.acf.nav_bar?.photography.title.replaceAll('+',"") as string} />
                     </li>
                   </ul>
                 </div>

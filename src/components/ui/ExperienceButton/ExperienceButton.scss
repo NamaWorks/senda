@@ -1,0 +1,20 @@
+@use "../../../styles/_mixins.scss" as mixins;
+@use "../../../styles/_typography.scss" as typography;
+@use "../../../styles/_globals.scss" as globals;
+
+  .experience__button {
+    @include typography.desktop-copy-c4;
+    text-decoration: none;
+    color: globals.$senda-color-black-050;
+    text-transform: none;
+    background-color: transparent;
+    border: 0px;
+    cursor: pointer;
+    
+    p {
+      text-decoration: none;
+      color: globals.$senda-color-black-050;
+      text-transform: none;
+      pointer-events: all;
+    };
+  }

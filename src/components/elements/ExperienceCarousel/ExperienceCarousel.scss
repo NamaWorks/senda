@@ -1,0 +1,14 @@
+@use "../../../styles/_mixins.scss" as mixins;
+@use "../../../styles/_typography.scss" as typography;
+@use "../../../styles/_globals.scss" as globals;
+
+.carousel {
+  padding: globals.$padding-general-100;
+  .carousel__itinerary {
+    @include mixins.flex-center;
+    // padding: 0 globals.$padding-general-0;
+    gap: globals.$gap-general-050;
+    justify-content: space-between;
+    align-items: start;
+  };
+};

@@ -1,0 +1,28 @@
+@use "../../../styles/_mixins.scss" as mixins;
+@use "../../../styles/_typography.scss" as typography;
+@use "../../../styles/_globals.scss" as globals;
+
+
+.itinerary__element {
+  @include mixins.flex-center;
+  flex-direction: column;
+  flex: 1;
+
+  .itinerary__element__title {
+    width: 100%;
+    p{
+      @include typography.desktop-title-h4;
+      color: globals.$senda-color-black-100;
+      text-align: left;
+    }
+  };
+
+  .itinerary__element__copy {
+    width: 100%;
+    p{
+      @include typography.desktop-copy-c1;
+      color: globals.$senda-color-black-100;
+      text-align: left;
+    }
+  };
+};
