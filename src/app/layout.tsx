@@ -10,7 +10,7 @@ import ComponentsContextProvider from "@/utils/contexts/context_providers/Compon
 
 export const metadata: Metadata = {
   title: "Senda - Adventure",
-  description: "",
+  description: "Transformative outdoor experiences for those who seek more than just adventure. Reconnect with nature, yourself, and others through movement, creativity and mindful exploration.",
 };
 
 export default function RootLayout({children,}: Readonly<{children: React.ReactNode;}>) {

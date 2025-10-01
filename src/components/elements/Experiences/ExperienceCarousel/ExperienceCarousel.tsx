@@ -5,15 +5,19 @@ import "./ExperienceCarousel.scss";
 import { useContext, useEffect, useState } from "react";
 import { ExperiencesContext } from "@/utils/contexts/contexts";
 import { ExperienceDataType, ExperiencesContextType } from "@/utils/types";
-import { fetchData } from "@/utils/actions/serverActions/actions";
+import { fetchData, fetchMedia } from "@/utils/actions/serverActions/actions";
 import ExperienceButton from "@/components/ui/ExperienceButton/ExperienceButton";
 import ItineraryElement from "../ItineraryElement/ItineraryElement";
+import { WPImage } from "@/utils/interfaces";
+import Image from "next/image";
 
 export default function ExperienceCarousel() {
 
   const { experiencesData, setExperiencesData, selectedExperience, setSelectedExperience } = useContext(ExperiencesContext) as ExperiencesContextType;
 
   const [ experienceToShow, setExperienceToShow ] = useState<ExperienceDataType | undefined>(undefined);
+
+  const [ experiencesImages, setExperiencesImages ] = useState<Array<WPImage | undefined>>([undefined])
 
 
   useEffect(()=>{
@@ -30,6 +34,24 @@ export default function ExperienceCarousel() {
     }
   }, [experiencesData, setExperiencesData, selectedExperience, setExperienceToShow]
 )
+
+useEffect(()=>{
+  async function getImg () {
+    if (experiencesData) {
+      const newArr = await Promise.all(
+        experiencesData.map(async (experience) => {
+          if (typeof experience?.acf.hero.image === "number") {
+            return await fetchMedia(experience.acf.hero.image);
+          }
+        })
+      )
+      setExperiencesImages(newArr);
+    }
+  };
+  
+  getImg();
+
+}, [setExperiencesImages, experiencesData])
 
   return (
     experiencesData && experienceToShow &&
@@ -51,17 +73,34 @@ export default function ExperienceCarousel() {
 
       </div>
 
-      <div className="carousel__images"></div>
+      <div className="carousel__images">
+        {
+          experiencesImages && experiencesImages.map((image, i) => {
+            return (
+                <div className="carousel__images__image" key={`image-experience-${i}`}>
+                  <Image 
+                    src={`${image?.guid.rendered}`} 
+                    alt={`${image?.alt_text}`} 
+                    // fill={true} 
+                    width={200} 
+                    height={200} 
+                    key={`experience-image-${i}`}/>
+                  <p></p>
+                </div>
+            )
+          })
+        }
+      </div>
 
       <div className="carousel__location">
-        <div className="carousel__location__container">
-          <video>
-            {/* <source src={experienceToShow.acf.location.video as string | "#"} type="video/mp4" /> */}
-            <source src={"#"} type="video/mp4" />
+        <div className="carousel__location__container carousel__location__video__container">
+          <video loop autoPlay muted playsInline width="640">
+            <source src={experienceToShow.acf.location.video as string | "#"} type="video/mp4" />
+            {/* <source src={"#"} type="video/mp4" /> */}
           </video>
         </div>
 
-        <div className="carousel__location__container">
+        <div className="carousel__location__container carousel__location__texts__container">
           <p className="carousel__location__container__main">{experienceToShow.acf.location.main_}</p>
           <p className="carousel__location__container__copy">{experienceToShow.acf.location.small_copy}</p>
         </div>

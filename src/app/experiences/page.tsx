@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
-import ExperienceCarousel from "@/components/elements/ExperienceCarousel/ExperienceCarousel";
+import ExperienceCarousel from "@/components/elements/Experiences/ExperienceCarousel/ExperienceCarousel";
 import "./page.scss";
-import Faq from "@/components/elements/Faq/Faq";
+import Faq from "@/components/elements/Experiences/Faq/Faq";
 
 export const metadata: Metadata = {
   title: "Senda - Experiences",

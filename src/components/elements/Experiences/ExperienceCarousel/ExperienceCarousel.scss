@@ -1,0 +1,79 @@
+@use "../../../../styles/_mixins.scss" as mixins;
+@use "../../../../styles/_typography.scss" as typography;
+@use "../../../../styles/_globals.scss" as globals;
+
+.carousel {
+  padding: globals.$padding-general-100;
+
+  .carousel__texts {
+    @include mixins.flex-center;
+    justify-content: space-between;
+    width: 100%;
+
+    .carousel__texts__heading {
+      .carousel__texts__heading__title {
+        @include typography.desktop-title-h4;
+        color: globals.$senda-color-black-100;
+        width: 18dvw;
+      };
+  
+      .carousel__texts__heading__copy {
+        max-width: 18dvw;
+        @include typography.desktop-copy-c1;
+        color: globals.$senda-color-black-100;
+      };
+    };
+
+    .carousel__texts__navigation {
+      display: flex;
+      flex-direction: column;
+      align-items: end;
+    };
+
+  };
+
+  .carousel__images {
+    @include mixins.flex-center;
+  };
+
+  .carousel__location {
+    height: 100%;
+    @include mixins.flex-center;
+    
+    .carousel__location__video__container {
+      @include mixins.flex-center;
+      height: 100%;
+      min-width: 20dvw;
+      position: relative;
+      align-items: end;
+      overflow: hidden;
+
+      video {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+
+    };
+
+    .carousel__location__texts__container {
+      .carousel__location__container__main {
+        @include typography.desktop-copy-c4;
+        color: globals.$senda-color-black-100;
+      };
+      .carousel__location__container__copy {
+        @include typography.desktop-copy-c1;
+        color: globals.$senda-color-black-100;
+      };
+    };
+  };
+
+  .carousel__itinerary {
+    @include mixins.flex-center;
+    // padding: 0 globals.$padding-general-0;
+    gap: globals.$gap-general-050;
+    justify-content: space-between;
+    align-items: start;
+  };
+
+};

@@ -5,6 +5,7 @@ import { fetchData, fetchMedia } from '@/utils/actions/serverActions/actions';
 import Image from 'next/image';
 import Partner from '@/components/elements/Home/Partner/Partner';
 import { HomeDataType, pageElementDataType } from '@/utils/types';
+import ExperiencesHome from '@/components/elements/Home/ExperiencesHome/ExperiencesHome';
 
 export default async function Home() {
 
@@ -51,6 +52,7 @@ export default async function Home() {
         <section className="home__experiences">
           {/* We have the info for the climbing slide in the CMS */}
           {/* Here we should fetch the experiences data from the WP api in order to print it */}
+          <ExperiencesHome/>
         </section>
         
         <section className="home__about">
