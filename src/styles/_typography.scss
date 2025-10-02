@@ -17,84 +17,101 @@
 
 @mixin desktop-title-h1 {
   @include titles-general;
-  font-size: 8.75rem;
+  // font-size: 8.75rem;
+  font-size: calc(100dvw * 0.0926);
 };
 
 @mixin desktop-title-h2 {
   @include titles-general;
   font-weight: 300;
-  font-size: 2.5rem;
+  // font-size: 2.5rem;
+  font-size: calc(100dvw * 0.0265);
   line-height: 100%;
   text-transform: none;
-  letter-spacing: -0.1rem;
+  // letter-spacing: -0.1rem;
+  letter-spacing: calc(-100dvw * 0.0010582011);
 };
 
 @mixin desktop-title-h3 {
   @include titles-general;
   // font-weight: 600;
   font-weight: 600;
-  font-size: 3rem;
+  // font-size: 3rem;
+  font-size: calc(100dvw * 0.0317);
   line-height: 100%;
-  letter-spacing: -0.12rem;
+  // letter-spacing: -0.12rem;
+  letter-spacing: calc(-100dvw * 0.0012698413);
 };
 
 @mixin desktop-title-h4 {
   @include titles-general;
   font-weight: 400;
-  font-size: 2rem;
+  // font-size: 2rem;
+  font-size: calc(100dvw * 0.021);
   line-height: 100%;
-  letter-spacing: -0.08rem;
+  // letter-spacing: -0.08rem;
+  letter-spacing: calc(-100dvw * 0.0008465608);
   text-transform: none;
 };
 
 @mixin desktop-title-h5 {
   @include titles-general;
   font-weight: 400;
-  font-size: 2rem;
+  // font-size: 2rem;
+  font-size: calc(100dvw * 0.021);
   line-height: 100%;
-  letter-spacing: -0.08rem;
+  // letter-spacing: -0.08rem;
+  letter-spacing: calc(-100dvw * 0.0008465608);
 };
 
 @mixin desktop-title-h6 {
   @include titles-general;
   font-weight: 700;
-  font-size: 1.25rem;
+  // font-size: 1.25rem;
+  font-size: calc(100dvw * 0.0132);
   line-height: 90%;
 };
 
 @mixin desktop-title-h7 {
   @include titles-general;
   font-weight: 700;
-  font-size: 0.875rem;
+  // font-size: 0.875rem;
+  font-size: calc(100dvw * 0.00926);
   line-height: 120%;
-  letter-spacing: 0.03rem;
+  // letter-spacing: 0.03rem;
+  letter-spacing: calc(100dvw * 0.0003174603);
   text-transform: none;
 };
 
 @mixin desktop-title-h8 {
   @include titles-general;
   font-weight: 400;
-  font-size: 0.75rem;
+  // font-size: 0.75rem;
+  font-size: calc(100dvw * 0.00794);
   line-height: 120%;
-  letter-spacing: 0.03rem;
+  // letter-spacing: 0.03rem;
+  letter-spacing: calc(100dvw * 0.0003174603);
 };
 
 @mixin desktop-footer-marquee {
   @include titles-general;
-  font-size: 8rem;
+  // font-size: 8rem;
+  font-size: (100dvw * 0.085);
 };
 
 
 @mixin mobile-title-h1 {
   @include titles-general;
-  font-size: 3rem;
+  // font-size: 3rem;
+  font-size: calc(100dvw * 0.032);
   line-height: 90%;
 };
 
 @mixin mobile-title-h2 {
   @include titles-general;
   font-weight: 400;
-  font-size: 2.25rem;
+  // font-size: 2.25rem;
+  font-size: calc(100dvw * 0.024);
   line-height: 100%;
   text-transform: none;
 };
@@ -102,24 +119,29 @@
 @mixin mobile-title-h3 {
   @include titles-general;
   font-weight: 600;
-  font-size: 2rem;
+  // font-size: 2rem;
+  font-size: calc(100dvw * 0.021);
   line-height: 120%;
-  letter-spacing: -0.08rem;
+  // letter-spacing: -0.08rem;
+  letter-spacing: calc(-100dvw * 0.0008465608);
 };
 
 @mixin mobile-title-h4 {
   @include titles-general;
   font-weight: 400;
-  font-size: 2rem;
+  // font-size: 2rem;
+  font-size: calc(100dvw * 0.021);
   line-height: 120%;
-  letter-spacing: -0.08rem;
+  // letter-spacing: -0.08rem;
+  letter-spacing: calc(-100dvw * 0.0008465608);
   text-transform: none;
 };
 
 @mixin mobile-title-h5 {
   @include titles-general;
   font-weight: 400;
-  font-size: 1.5rem;
+  // font-size: 1.5rem;
+  font-size: calc(100dvw * 0.016);
   line-height: 100%;
   letter-spacing: -0.0rem;
 };
@@ -127,30 +149,35 @@
 @mixin mobile-title-h6 {
   @include titles-general;
   font-weight: 700;
-  font-size: 1.25rem;
+  // font-size: 1.25rem;
+  font-size: calc(100dvw * 0.013);
   line-height: 90%;
 };
 
 @mixin mobile-title-h7 {
   @include titles-general;
   font-weight: 500;
-  font-size: 0.875rem;
+  // font-size: 0.875rem;
+  font-size: calc(100dvw * 0.00925);
   line-height: 110%;
-  letter-spacing: 0.0875rem;
+  // letter-spacing: 0.0875rem;
+  letter-spacing: calc(100dvw * 0.00925);
   text-transform: none;
 };
 
 @mixin mobile-title-h8 {
   @include titles-general;
   font-weight: 400;
-  font-size: 0.75rem;
+  // font-size: 0.75rem;
+  font-size: calc(100dvw * 0.008);
   line-height: 120%;
   letter-spacing: -0.0rem;
 };
 
 @mixin mobile-footer-marquee {
   @include titles-general;
-  font-size: 4rem;
+  // font-size: 4rem;
+  font-size: calc(100dvw * 0.042);
   line-height: 90%;
   font-weight: 800;
 };
@@ -162,14 +189,17 @@
 
 @mixin desktop-copy-c1 {
   @include copy-general;
-  font-size: 1.25rem;
-  letter-spacing: -0.05rem;
+  // font-size: 1.25rem;
+  font-size: calc(100dvw * 0.013);
+  // letter-spacing: -0.05rem;
+  letter-spacing: calc(-100dvw * 0.0005291005);
   font-weight: 300;
 };
 
 @mixin desktop-copy-c2 {
   @include copy-general;
-  font-size: 1.25rem;
+  // font-size: 1.25rem;
+  font-size: calc(100dvw * 0.0132);
   text-transform: uppercase;
   mix-blend-mode: overlay;
 };
@@ -177,35 +207,43 @@
 @mixin desktop-copy-c3 {
   @include copy-general;
   font-weight: 300;
-  font-size: 4rem;
+  // font-size: 4rem;
+  font-size: calc(100dvw * 0.0423);
   line-height: 110%;
-  letter-spacing: -0.16rem;
+  // letter-spacing: -0.16rem;
+  letter-spacing: calc(-100dvw * 0.0016931217);
 };
 
 @mixin desktop-copy-c4 {
   @include copy-general;
-  font-size: 2.25rem;
+  // font-size: 2.25rem;
+  font-size: calc(100dvw * 0.024);
   line-height: 120%;
-  letter-spacing: -0.09rem;
+  // letter-spacing: -0.09rem;
+  letter-spacing: calc(-100dvw * 0.0009523810);
 };
 
 @mixin desktop-copy-c5 {
   @include copy-general;
-  font-size: 1rem;
-  letter-spacing: -0.05rem;
+  // font-size: 1rem;
+  font-size: calc(100dvw * 0.0106);
+  // letter-spacing: -0.05rem;
+  letter-spacing: calc(100dvw * 0.00053);
   font-weight: 300;
 };
 
 @mixin desktop-buttons {
   @include copy-general;
-  font-size: 1rem;
+  // font-size: 1rem;
+  font-size: calc(100dvw * 0.0106);
   line-height: 90%;
   text-transform: uppercase;
 };
 
 @mixin mobile-copy-c1 {
   @include copy-general;
-  font-size: 1.25rem;
+  // font-size: 1.25rem;
+  font-size: calc(100dvw * 0.0132);
   letter-spacing: -0.0rem;
   line-height: 100%;
   font-weight: 500;
@@ -213,28 +251,34 @@
 
 @mixin mobile-copy-c2 {
   @include copy-general;
-  font-size: 1rem;
+  // font-size: 1rem;
+  font-size: calc(100dvw * 0.0106);
   text-transform: uppercase;
 };
 
 @mixin mobile-copy-c3 {
   @include copy-general;
-  font-size: 2.5rem;
+  // font-size: 2.5rem;
+  font-size: calc(100dvw * 0.0264);
   line-height: 110%;
-  letter-spacing: -0.1rem;
+  // letter-spacing: -0.1rem;
+  letter-spacing: calc(-100dvw * 0.00106);
 };
 
 @mixin mobile-copy-c4 {
   @include copy-general;
-  font-size: 1.5rem;
+  // font-size: 1.5rem;
+  font-size: calc(100dvw * 0.0159);
   line-height: 120%;
-  letter-spacing: -0.06rem;
+  // letter-spacing: -0.06rem;
+  letter-spacing: calc(-100dvw * 0.000635);
 };
 
 @mixin mobile-buttons {
   @include copy-general;
   font-weight: 500;
-  font-size: 1rem;
+  // font-size: 1rem;
+  font-size: calc(100dvw * 0.01058);
   line-height: 90%;
   text-transform: uppercase;
 };
