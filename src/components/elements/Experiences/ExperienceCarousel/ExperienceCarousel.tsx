@@ -54,67 +54,93 @@ useEffect(()=>{
 }, [setExperiencesImages, experiencesData])
 
   return (
-    experiencesData && experienceToShow &&
-   <>
-    <div className="carousel" id="experience-carousel">
+    experiencesData &&
+    experienceToShow && (
+      <>
+        <div className="carousel" id="experience-carousel">
+          <div className="carousel__texts">
+            <div className="carousel__texts__heading">
+              <p className="carousel__texts__heading__title">
+                {experienceToShow.acf.hero.heading}
+              </p>
+              <p className="carousel__texts__heading__copy">
+                {experienceToShow.acf.hero.description}
+              </p>
+            </div>
 
-      <div className="carousel__texts">
+            <div className="carousel__texts__navigation">
+              {experiencesData.map((exp, i) => {
+                return (
+                  <ExperienceButton
+                    experience={`${exp?.acf.title.toLowerCase()}`}
+                    key={i}
+                  />
+                );
+              })}
+            </div>
+          </div>
 
-        <div className="carousel__texts__heading">
-          <p className="carousel__texts__heading__title">{experienceToShow.acf.hero.heading}</p>
-          <p className="carousel__texts__heading__copy">{experienceToShow.acf.hero.description}</p>
+          <div className="carousel__images">
+            {experiencesImages &&
+              experiencesImages.map((image, i) => {
+                return (
+                  <div
+                    className="carousel__images__image"
+                    key={`image-experience-${i}`}
+                  >
+                    <Image
+                      src={`${image?.guid.rendered}`}
+                      alt={`${image?.alt_text}`}
+                      // fill={true}
+                      width={200}
+                      height={200}
+                      key={`experience-image-${i}`}
+                    />
+                    <p></p>
+                  </div>
+                );
+              })}
+          </div>
+
+          <div className="carousel__location">
+            <div className="carousel__location__container carousel__location__video__container">
+              <div className="carousel__location__video__content">
+                <video loop autoPlay muted playsInline width="640">
+                  <source
+                    src={experienceToShow.acf.location.video as string | "#"}
+                    type="video/mp4"
+                  />
+                  {/* <source src={"#"} type="video/mp4" /> */}
+                </video>
+              </div>
+            </div>
+
+            <div className="carousel__location__container carousel__location__texts__container">
+              <p className="carousel__location__container__main">
+                {experienceToShow.acf.location.main_}
+              </p>
+              <p className="carousel__location__container__copy">
+                {experienceToShow.acf.location.small_copy}
+              </p>
+            </div>
+          </div>
+
+          <div className="carousel__itinerary">
+            {Object.keys(experienceToShow.acf.itinerary).map((key, i) => {
+              return (
+                <ItineraryElement
+                  key={i}
+                  data={
+                    experienceToShow.acf.itinerary[
+                      key as keyof typeof experienceToShow.acf.itinerary
+                    ]
+                  }
+                />
+              );
+            })}
+          </div>
         </div>
-
-        <div className="carousel__texts__navigation">
-          {
-            experiencesData.map((exp, i)=>{return <ExperienceButton experience={`${exp?.acf.title.toLowerCase()}`} key={i}/>})
-          }
-        </div>
-
-      </div>
-
-      <div className="carousel__images">
-        {
-          experiencesImages && experiencesImages.map((image, i) => {
-            return (
-                <div className="carousel__images__image" key={`image-experience-${i}`}>
-                  <Image 
-                    src={`${image?.guid.rendered}`} 
-                    alt={`${image?.alt_text}`} 
-                    // fill={true} 
-                    width={200} 
-                    height={200} 
-                    key={`experience-image-${i}`}/>
-                  <p></p>
-                </div>
-            )
-          })
-        }
-      </div>
-
-      <div className="carousel__location">
-        <div className="carousel__location__container carousel__location__video__container">
-          <video loop autoPlay muted playsInline width="640">
-            <source src={experienceToShow.acf.location.video as string | "#"} type="video/mp4" />
-            {/* <source src={"#"} type="video/mp4" /> */}
-          </video>
-        </div>
-
-        <div className="carousel__location__container carousel__location__texts__container">
-          <p className="carousel__location__container__main">{experienceToShow.acf.location.main_}</p>
-          <p className="carousel__location__container__copy">{experienceToShow.acf.location.small_copy}</p>
-        </div>
-      </div>
-
-      <div className="carousel__itinerary">
-        {
-          Object.keys(experienceToShow.acf.itinerary).map((key, i)=>{
-            return <ItineraryElement key={i} data={experienceToShow.acf.itinerary[key as keyof typeof experienceToShow.acf.itinerary]} />
-          })
-        }
-      </div>
-      
-    </div>
-   </>
+      </>
+    )
   );
 }

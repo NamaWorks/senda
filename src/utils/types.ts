@@ -187,8 +187,12 @@ type NavDataType = {
   logo: number,
 };
 
-type FaqDataType = {
+export type FaqDataType = {
   [key: `faq_${string}`]: FaqInterface;
+  // [key: `faq_${string}`]: {
+  //   question: string,
+  //   answer: string,
+  // };
 };
 
  // Contexts types

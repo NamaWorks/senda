@@ -37,31 +37,43 @@
   };
 
   .carousel__location {
-    height: 100%;
     @include mixins.flex-center;
+    gap: globals.$padding-general-025;
+    height: 25dvw;
+    padding: globals.$padding-general-050 0;
     
     .carousel__location__video__container {
       @include mixins.flex-center;
       height: 100%;
-      min-width: 20dvw;
-      position: relative;
+      width: 100%;
       align-items: end;
-      overflow: hidden;
-
-      video {
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-      }
+      
+      .carousel__location__video__content {
+        @include mixins.flex-center;
+        height: 10dvw;
+        width: 20dvw;
+        // min-width: 20dvw;
+        overflow: hidden;
+        
+        video {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+          align-content:center;
+        }
+      };
 
     };
 
     .carousel__location__texts__container {
       .carousel__location__container__main {
         @include typography.desktop-copy-c4;
+        width: 85%;
         color: globals.$senda-color-black-100;
       };
       .carousel__location__container__copy {
+        width: 45%;
+        justify-self: flex-end;
         @include typography.desktop-copy-c1;
         color: globals.$senda-color-black-100;
       };
