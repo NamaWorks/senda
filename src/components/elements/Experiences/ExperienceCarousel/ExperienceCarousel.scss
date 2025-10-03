@@ -66,6 +66,11 @@
     };
 
     .carousel__location__texts__container {
+      @include mixins.flex-center;
+      flex-direction: column;
+      align-items: first baseline;
+      justify-content: center;
+      gap: globals.$gap-general-025;
       .carousel__location__container__main {
         @include typography.desktop-copy-c4;
         width: 85%;
@@ -74,6 +79,7 @@
       .carousel__location__container__copy {
         width: 45%;
         justify-self: flex-end;
+        align-self: flex-end;
         @include typography.desktop-copy-c1;
         color: globals.$senda-color-black-100;
       };

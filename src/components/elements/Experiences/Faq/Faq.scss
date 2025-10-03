@@ -4,24 +4,48 @@
 
 #faq {
   @include mixins.flex-center;
-  padding: globals.$padding-general-050;
+  flex-direction: column;
+  padding: globals.$padding-general-120 globals.$padding-general-050;
   background-color: globals.$senda-color-white-200;
+  position: relative;
+  top: 9dvw;
+
+  .faq__mountains {
+    @include mixins.flex-center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    div {
+      width: 100dvw;
+      height: 250px;
+      object-fit: cover;
+      position: absolute;
+      top: -30dvh;
+    };
+
+    .faq__mountains__a {
+
+    }
+    .faq__mountains__b {
+      top: -29dvh
+    }
+  };
   
   .faq__container{
     @include mixins.flex-center;
     flex-direction: column;
     align-items: flex-start;
-    background-color: globals.$senda-color-white-100;
-    // position: relative;
-    // padding: globals.$padding-general-010;
     
     .faq__item {
+      background-color: globals.$senda-color-white-100;
       padding: globals.$padding-general-010;
       display: flex;
       position: relative;
       flex-direction: column;
       width: calc(100% - 2 * globals.$padding-general-010);
       border-bottom: 1px solid globals.$senda-color-black-050;
+
       gap: globals.$gap-general-010;
 
       .faq__item__question {

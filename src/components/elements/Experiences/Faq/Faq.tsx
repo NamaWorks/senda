@@ -22,6 +22,14 @@ export default function Faq() {
   return (
    <>
    <div className="faq" id="faq">
+    <div className="faq__mountains">
+      <div className="faq__mountains__a">
+        <Image src="https://moona.dev/senda/wp-content/uploads/2025/10/faq_blue.svg" alt="arrow image" fill={true}/>
+      </div>
+      <div className="faq__mountains__b">
+        <Image src="https://moona.dev/senda/wp-content/uploads/2025/10/faq_white.svg" alt="arrow image" fill={true}/>
+      </div>
+    </div>
     <div className="faq__container">
     {
       faqData?.acf?.faq && 
