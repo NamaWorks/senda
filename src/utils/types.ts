@@ -100,7 +100,7 @@ export type ExperienceDataType = {
     home: {
       heading: string;
       description: string;
-      image: boolean;
+      image: WPImage | number | undefined | string;
       tab: {
         name: string;
         number: string;
@@ -109,7 +109,7 @@ export type ExperienceDataType = {
     hero: {
       heading: string;
       description: string;
-      image: boolean;
+      image: WPImage | number | undefined | string;
     };
     location: {
       main_: string;

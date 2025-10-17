@@ -3,7 +3,7 @@ import "./Button.scss";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-export default function Button({copy, fnc, icon}: {copy?:string, fnc?: React.MouseEventHandler<HTMLButtonElement> | (()=>void) |undefined , icon?:string}) {
+export default function Button({copy, fnc, icon, round=true}: {copy?:string, fnc?: React.MouseEventHandler<HTMLButtonElement> | (()=>void) |undefined , icon?:string, round?:boolean}) {
 
 
   const [ iconSrc, setIconSrc ] = useState<string>();
@@ -19,9 +19,9 @@ export default function Button({copy, fnc, icon}: {copy?:string, fnc?: React.Mou
 
   return (
     <>
-      <button className="button-general" onClick={ fnc }>
+      <button className={`button-general`} onClick={ fnc }>
         { icon &&
-          <div className={`btn__icon btn ${icon === "logo" && 'logo-icon'}`}>
+          <div className={`btn__icon btn ${icon === "logo" && 'logo-icon'} ${round ? 'rounded-button' : 'squared-button'}`}>
             <Image 
               fill={true}
               src={ typeof iconSrc === 'string' ? iconSrc : 'null' } 
@@ -30,7 +30,7 @@ export default function Button({copy, fnc, icon}: {copy?:string, fnc?: React.Mou
         }
 
         { copy &&
-          <div className="btn__copy btn">
+          <div className={`btn__copy btn ${round ? 'rounded-button' : 'squared-button'}`}>
             <p className="btn__copy__text">{ copy }</p>
           </div>
         }

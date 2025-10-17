@@ -1,0 +1,7 @@
+@use "../../styles/_mixins.scss" as mixins;
+@use "../../styles/_typography.scss" as typography;
+@use "../../styles/_globals.scss" as globals;
+
+#experiences {
+  background-color: globals.$senda-color-white-100;
+};

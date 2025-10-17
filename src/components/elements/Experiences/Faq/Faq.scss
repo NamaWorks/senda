@@ -9,6 +9,8 @@
   background-color: globals.$senda-color-white-200;
   position: relative;
   top: 9dvw;
+  background: linear-gradient(0deg, globals.$senda-color-white-200 90%,  globals.$senda-color-white-100 90%);
+  // background-color: red;
 
   .faq__mountains {
     @include mixins.flex-center;
@@ -17,6 +19,8 @@
     position: relative;
 
     div {
+      @include mixins.flex-center;
+      align-items: flex-end;
       width: 100dvw;
       height: 250px;
       object-fit: cover;
@@ -25,11 +29,13 @@
     };
 
     .faq__mountains__a {
-
-    }
+      background: #2A7B9B;
+      background: linear-gradient(0deg, globals.$senda-color-white-200 40%,  globals.$senda-color-white-100 40%);
+    };
+    
     .faq__mountains__b {
-      top: -29dvh
-    }
+      top: -29dvh;
+    };
   };
   
   .faq__container{
