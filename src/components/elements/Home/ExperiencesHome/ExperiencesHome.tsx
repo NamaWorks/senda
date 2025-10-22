@@ -7,7 +7,8 @@ import { ExperienceDataType, ExperiencesContextType } from "@/utils/types";
 import { fetchData, fetchMedia } from "@/utils/actions/serverActions/actions";
 import Button from "@/components/ui/Button/Button";
 import Image from "next/image";
-import { WPImage } from "@/utils/interfaces";
+import { WPImage, WPImageACF } from "@/utils/interfaces";
+import { useRouter } from "next/navigation";
 
 export default function ExperiencesHome () {
 
@@ -15,7 +16,9 @@ export default function ExperiencesHome () {
 
   const [ highlightedExperience, setHighlightedExperience ] = useState<ExperienceDataType | undefined>(undefined);
 
-  const [ experienceImage, setExperienceImage] = useState<WPImage | undefined>(undefined);
+  const [ experienceImage, setExperienceImage] = useState<WPImage | WPImageACF | undefined>(undefined);
+
+  const router = useRouter();
 
   
   const getData = useCallback(
@@ -29,9 +32,9 @@ export default function ExperiencesHome () {
   const getExperienceToShow = useCallback(
     async () => {
       const toShow = experiencesData?.find((exp)=>{return (exp as ExperienceDataType).acf.title.toString().toLowerCase() === selectedExperience?.toString().toLowerCase()});
-
       setHighlightedExperience(toShow);
-      setExperienceImage(await fetchMedia(Number(toShow?.acf.home.image)))
+      const experienceImage = await fetchMedia(Number(toShow?.acf.home.image));
+      setExperienceImage(experienceImage);
     }
     ,
     [experiencesData, selectedExperience]
@@ -53,44 +56,90 @@ export default function ExperiencesHome () {
 
   return (
     <>
-      <p>{experiencesData?.map((exp,i)=>{return (exp?.acf.title)})}</p>
-      <p>{selectedExperience}</p>
-
       <div className="home__experiences">
         <div className="home__experiences__container home__experiences__tabs">
-          {
-            experiencesData?.map((experience, i) => {
-              if(i<3){
-                return (
-                  <div key={`home-tab-${experience?.id}-${i}`} className="home__experiences__tabs__tab">
-                    <div className="home__experiences__tabs__tab__index">
-                      <p>00{i+1}</p>
-                    </div>
-                    <div className="home__experiences__tabls__tab__index__box">
-                      <p>+ {experience?.acf.title}</p>
-                    </div>
+          {experiencesData?.map((experience, i) => {
+            // only render the first three and when a title exists
+            const title = experience?.acf?.title;
+            if (i < 3 && title) {
+              return (
+                <div
+                  key={`home-tab-${experience?.id}-${i}`}
+                  className="home__experiences__tabs__tab"
+                  onClick={() => {
+                    if(setSelectedExperience) {
+                      setSelectedExperience(title as string)
+                    }
+                  }}
+                >
+                  <div className="home__experiences__tabs__tab__index">
+                    <p>00{i + 1}</p>
                   </div>
-                )
-              }
-            })
-          }
+                  <div className="home__experiences__tabs__tab__box">
+                    <p>+ {title}</p>
+                  </div>
+                </div>
+              );
+            }
+            return null;
+          })}
+
+          <div
+            className="home__experiences__tabs__tab"
+            onClick={()=>{
+              router.push('/experiences')
+            }}
+          >
+            <div className="home__experiences__tabs__tab__index">
+              <p>Many more</p>
+            </div>
+            <div className="home__experiences__tabs__tab__box">
+              <Image fill={true} src={'https://moona.dev/senda/wp-content/uploads/2025/08/Senda_Assets_23_11_11zon.webp'} alt={'climbing rope image'}/>
+            </div>
+          </div>
         </div>
         <div className="home__experiences__container home__experiences__selected">
-          <div className="home__experiences__selected__texts">
-            <p className="home__experience__selected__heading">{highlightedExperience?.acf.home.heading}</p>
-            <p className="home__experience__selected__description">{highlightedExperience?.acf.home.description}</p>
-          </div>
-          <div className="home__experiences__selected__buttons">
-              <Button copy={`#${highlightedExperience?.acf.home.tab.name}`} fnc={()=>{console.log('test')}} round={false}/>
-              <Button copy="Start now" fnc={()=>{console.log('test')}} icon="right_arrow"/>
-          </div>
+          {(() => {
+            const heading = highlightedExperience?.acf?.home?.heading ?? "";
+            const description = highlightedExperience?.acf?.home?.description ?? "";
+            const tabName = highlightedExperience?.acf?.home?.tab?.name ?? "";
+            return (
+              <>
+                <div className="home__experiences__selected__texts">
+                  <p className="home__experiences__selected__heading">{heading}</p>
+                  <p className="home__experiences__selected__description">{description}</p>
+                </div>
+                <div className="home__experiences__selected__buttons">
+                  <Button
+                    copy={tabName ? `#${tabName}` : ""}
+                    fnc={() => {
+                      router.push('/experiences')
+                    }}
+                    round={false}
+                  />
+                  <Button
+                    copy="Start now"
+                    fnc={() => {
+                      router.push('/experiences')
+                    }}
+                    icon="right_arrow"
+                  />
+                </div>
+              </>
+            );
+          })()}
         </div>
 
-      <div className="home__experiences__image">
-        <Image fill={true} src={`${experienceImage?.guid.rendered}`} alt={`${highlightedExperience?.acf.home.image}`}/>
-      </div>
-
+        <div className="home__experiences__image">
+          {experienceImage?.guid?.rendered && (
+            <Image
+              fill={true}
+              src={experienceImage.guid.rendered}
+              alt={String(highlightedExperience?.acf?.home?.image ?? "")}
+            />
+          )}
+        </div>
       </div>
     </>
-  )
+  );
 };

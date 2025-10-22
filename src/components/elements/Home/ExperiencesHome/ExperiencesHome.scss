@@ -1,0 +1,125 @@
+@use "../../../../styles/_mixins" as mixins;
+@use "../../../../styles/_globals" as globals;
+@use "../../../../styles/_typography" as typography;
+
+.home__experiences {
+  @include mixins.flex-center;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 90dvh;
+  position: relative;
+
+  .home__experiences__container {
+    @include mixins.flex-center;
+    gap: 0;
+    z-index: 2;
+    position: relative;
+  };
+
+  
+  .home__experiences__tabs {
+    
+    .home__experiences__tabs__tab:nth-child(1){
+      background-color: globals.$senda-color-blue-100;
+    };
+    .home__experiences__tabs__tab:nth-child(2){
+      background-color: globals.$senda-color-white-300;
+    };
+    .home__experiences__tabs__tab:nth-child(3){
+      background-color: globals.$senda-color-orange;
+    };
+
+    .home__experiences__tabs__tab {
+      @include mixins.flex-center;
+      align-items: flex-start;
+      justify-content: flex-start;
+      width: 20dvw;
+      height: 20dvw;
+      background-color: red;
+      position: relative;
+
+      .home__experiences__tabs__tab__box {
+        @include mixins.flex-center;
+        padding: globals.$padding-general-006;
+        
+        p {
+          @include typography.desktop-copy-c4;
+          color: globals.$senda-color-black-100;
+        };
+      }
+
+      .home__experiences__tabs__tab__index {
+        // width: 100%;
+        text-align: right;
+        position: absolute;
+        // padding: globals.$padding-general-006;
+        top: calc(globals.$padding-general-006 * -2);
+        right: globals.$padding-general-006;
+
+        p {
+          @include typography.desktop-title-h8;
+          color: globals.$senda-color-black-100;
+          font-weight: 300;
+          text-transform: none;
+        };
+      };
+    };
+  };
+
+  .home__experiences__selected {
+    @include mixins.flex-center;
+    justify-content: space-between;
+    width: 80dvw;
+    padding: globals.$padding-general-012 0;
+
+    .home__experiences__selected__texts {
+      @include mixins.flex-center;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-self: flex-start;
+      position: relative;
+      width: 65%;
+      gap: globals.$gap-general-010;
+
+      .home__experiences__selected__heading {
+        @include typography.desktop-copy-c2;
+        color: globals.$senda-color-white-100;
+      };
+
+      .home__experiences__selected__description {
+        @include typography.desktop-copy-c4;
+        color: globals.$senda-color-white-100;
+        font-weight: 100;
+        width: 100%;
+      };
+
+    };
+
+    .home__experiences__selected__buttons {
+      @include mixins.flex-center;
+      justify-content: flex-end;
+      width: 35%;
+      justify-self: flex-end;
+      align-self: flex-end;
+
+      button {
+        margin: 0;
+        padding: 0;
+      };
+    };
+
+  };
+
+  .home__experiences__image {
+    height: 100%;
+    width: 100dvw;
+    position: absolute;
+    z-index: 1;
+      
+    img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%
+    };
+  };
+}

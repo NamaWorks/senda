@@ -201,7 +201,7 @@ export type FaqDataType = {
   experiencesData?: (ExperienceDataType|undefined)[] | undefined,
   setExperiencesData?: React.Dispatch<React.SetStateAction<((ExperienceDataType|undefined)[] | undefined)>>,
   selectedExperience?: string | undefined,
-  setSelectedExperience?: React.Dispatch<React.SetStateAction<string| undefined>>
+  setSelectedExperience?: React.Dispatch<React.SetStateAction<string | undefined>>
  };
 
  export type ComponentsContextType = {
