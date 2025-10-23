@@ -7,6 +7,21 @@
   @include mixins.flex-center;
   flex-direction: column;
   flex: 1;
+  gap: globals.$gap-general-005;
+
+  .itinerary__element__icon {
+    display: flex;
+    position: relative;
+    width: 4dvw;
+    height: 4dvw;
+    align-self: flex-start;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  };
 
   .itinerary__element__title {
     width: 100%;

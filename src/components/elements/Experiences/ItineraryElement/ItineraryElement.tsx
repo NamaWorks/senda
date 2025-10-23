@@ -14,16 +14,17 @@ export default function ItineraryElement({ data }: { data: {heading: string, des
       getMedia()
     }
     async function getMedia () {
-      const mediaData = await fetchMedia(data.icon as number)
-      setIconData(mediaData)
+      const mediaData = await fetchMedia(data.icon as number);
+      setIconData(mediaData);
     };
   },[setIconData, data])
 
   return (
+    iconData &&
     <>
      <div className="itinerary__element">
       <div className="itinerary__element__icon">
-        {/* <Image src={iconData?.guid.rendered as string | "#"} fill={true} alt={iconData?.alt_text as string}/> */}
+        <Image src={iconData?.guid.rendered as string} fill={true} alt={iconData?.alt_text as string}/>
       </div>
       <div className="itinerary__element__title">
         <p>{data.heading}</p>

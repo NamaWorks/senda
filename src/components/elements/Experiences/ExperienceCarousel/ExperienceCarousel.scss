@@ -4,6 +4,7 @@
 
 .carousel {
   padding: globals.$padding-general-100;
+  padding-bottom: calc(globals.$padding-general-100/2);
 
   .carousel__texts {
     @include mixins.flex-center;
