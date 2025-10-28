@@ -7,6 +7,7 @@ import Nav from "@/components/elements/Nav/Nav";
 import SmoothScrollProvider from "@/utils/providers/SmoothScrollProvider";
 import ExperiencesContextProvider from "@/utils/contexts/context_providers/ExperiencesContextProvider";
 import ComponentsContextProvider from "@/utils/contexts/context_providers/ComponentsContextProvider";
+import AnimationsProvider from "@/utils/providers/AnimationsProvider";
 
 export const metadata: Metadata = {
   title: "Senda - Adventure",
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({children,}: Readonly<{children: React.ReactNode;}>) {
   return (
+  <AnimationsProvider>
   <SmoothScrollProvider>
   <ExperiencesContextProvider>
   <ComponentsContextProvider>
@@ -28,5 +30,6 @@ export default function RootLayout({children,}: Readonly<{children: React.ReactN
   </ComponentsContextProvider>
   </ExperiencesContextProvider>
   </SmoothScrollProvider>
+  </AnimationsProvider>
   );
 }

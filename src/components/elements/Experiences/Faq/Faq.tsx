@@ -12,7 +12,6 @@ export default function Faq() {
 
   useEffect(()=>{
     const getData = async () => {
-      console.log('test')
       const data = await fetchComponent('faq');
       setFaqData(data);
     }

@@ -8,7 +8,6 @@ import Image from 'next/image';
 import Partner from '@/components/elements/Home/Partner/Partner';
 import { HomeDataType, pageElementDataType } from '@/utils/types';
 import ExperiencesHome from '@/components/elements/Home/ExperiencesHome/ExperiencesHome';
-import { addDomAnimations } from '@/utils/actions/clientActions/domManipulation/addAnimations';
 
 export default async function Home() {
 
