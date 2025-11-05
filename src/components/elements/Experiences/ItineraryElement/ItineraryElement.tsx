@@ -26,7 +26,7 @@ export default function ItineraryElement({ data }: { data: {heading: string, des
       <div className="itinerary__element__icon">
         <Image src={iconData?.guid.rendered as string} fill={true} alt={iconData?.alt_text as string}/>
       </div>
-      <div className="itinerary__element__title">
+      <div className="itinerary__element__title" data-animation="paragraph">
         <p>{data.heading}</p>
       </div>
       <div className="itinerary__element__copy">

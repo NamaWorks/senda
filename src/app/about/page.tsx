@@ -66,7 +66,7 @@ export default function About() {
         </video>
         <div className="about__video__overlay"></div>
         <div className="about__video__texts">
-          <p>{aboutData?.video.heading}</p>
+          <p data-animation="paragraph">{aboutData?.video.heading}</p>
         </div>
       </section>
 
@@ -86,10 +86,10 @@ export default function About() {
 
         <div className="about__values__texts">
           <div className="about__values__texts__heading">
-            <p>{aboutData?.values.texts.heading}</p>
+            <p data-animation="paragraph">{aboutData?.values.texts.heading}</p>
           </div>
           <div className="about__values__texts__copy">
-            <p>{aboutData?.values.texts.copy}</p>
+            <p data-animation="paragraph">{aboutData?.values.texts.copy}</p>
           </div>
         </div>
       </section>

@@ -9,6 +9,7 @@ import Partner from '@/components/elements/Home/Partner/Partner';
 import { HomeDataType, pageElementDataType } from '@/utils/types';
 import ExperiencesHome from '@/components/elements/Home/ExperiencesHome/ExperiencesHome';
 
+
 export default async function Home() {
 
   const content = (await fetchData('home')) as pageElementDataType;
@@ -22,9 +23,9 @@ export default async function Home() {
 
           <div className="home__hero__top">
             <div className='home__hero__texts'>
-              <h2 className='home__hero__texts__preheading'>{homeData.hero.pre_h1}</h2>
-              <h1 className='home__hero__texts__heading'>{homeData.hero.heading_h1}</h1>
-              <h2 className='home__hero__texts__postheading'>{homeData.hero.post_h1}</h2>
+              <h2 className='home__hero__texts__preheading' >{homeData.hero.pre_h1}</h2>
+              <h1 className='home__hero__texts__heading' >{homeData.hero.heading_h1}</h1>
+              <h2 className='home__hero__texts__postheading' >{homeData.hero.post_h1}</h2>
             </div>
             <div className="home__hero__square"></div>
           </div>
@@ -64,7 +65,7 @@ export default async function Home() {
           </div>
 
           <div className="home__about__founder">
-            <p className="home__about__founder__text">
+            <p className="home__about__founder__text" data-animation="paragraph">
               {homeData.about.alex_description}
             </p>
             <div className="home__about__founder__picture">
@@ -92,8 +93,13 @@ export default async function Home() {
                 })
               }
 
-            <h3 className='home__partners__title home__partners__grid-item'>{homeData.partners.heading}</h3>
-            <p className='home__partners__copy home__partners__grid-item'>{homeData.partners.copy}</p>
+            <div className="home__partners__grid-item home__partners__title">
+              <h3 className='home__partners__title__content'>{homeData.partners.heading}</h3>
+            </div>
+
+            <div className="home__partners__grid-item home__partners__copy">
+              <p className='home__partners__copy__content' data-animation="paragraph">{homeData.partners.copy}</p>
+            </div>
           </div>
         </section>
 

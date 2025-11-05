@@ -11,6 +11,7 @@ import ItineraryElement from "../ItineraryElement/ItineraryElement";
 import { WPImage } from "@/utils/interfaces";
 import Image from "next/image";
 
+
 export default function ExperienceCarousel() {
 
   const { experiencesData, setExperiencesData, selectedExperience, setSelectedExperience } = useContext(ExperiencesContext) as ExperiencesContextType;
@@ -32,6 +33,7 @@ export default function ExperienceCarousel() {
       const toShow = experiencesData?.find((exp)=>{return (exp as ExperienceDataType).acf.title.toString().toLowerCase() === selectedExperience?.toString().toLowerCase()});
       setExperienceToShow(toShow as ExperienceDataType);
     }
+
   }, [experiencesData, setExperiencesData, selectedExperience, setExperienceToShow]
 )
 
@@ -60,7 +62,7 @@ useEffect(()=>{
         <div className="carousel" id="experience-carousel">
           <div className="carousel__texts">
             <div className="carousel__texts__heading">
-              <p className="carousel__texts__heading__title">
+              <p className="carousel__texts__heading__title" data-animation="paragraph">
                 {experienceToShow.acf.hero.heading}
               </p>
               <p className="carousel__texts__heading__copy">
@@ -116,7 +118,7 @@ useEffect(()=>{
             </div>
 
             <div className="carousel__location__container carousel__location__texts__container">
-              <p className="carousel__location__container__main">
+              <p className="carousel__location__container__main" data-animation="paragraph" >
                 {experienceToShow.acf.location.main_}
               </p>
               <p className="carousel__location__container__copy">
