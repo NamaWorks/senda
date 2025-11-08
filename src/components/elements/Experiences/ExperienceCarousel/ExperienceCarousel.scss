@@ -15,11 +15,11 @@
       .carousel__texts__heading__title {
         @include typography.desktop-title-h4;
         color: globals.$senda-color-black-100;
-        width: 18dvw;
+        width: 24dvw;
       };
   
       .carousel__texts__heading__copy {
-        max-width: 18dvw;
+        max-width: 24dvw;
         @include typography.desktop-copy-c1;
         color: globals.$senda-color-black-100;
       };

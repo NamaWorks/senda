@@ -1,12 +1,16 @@
+import { btnTextIn, btnTextOut } from "@/utils/actions/clientActions/animations/buttonTriggered/textButtonAnimations";
 import "./Button.scss";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { HtmlContext } from "next/dist/server/route-modules/pages/vendored/contexts/entrypoints";
 
 export default function Button({copy, fnc, icon, round=true}: {copy?:string, fnc?: React.MouseEventHandler<HTMLButtonElement> | (()=>void) |undefined , icon?:string, round?:boolean}) {
 
 
   const [ iconSrc, setIconSrc ] = useState<string>();
+  const [ newCopy, setNewCopy ] = useState<string | undefined>(copy);
+  const buttonTextRef = useRef(null)
 
   useEffect(()=>{
     if(icon==="up_arrow"){setIconSrc('https://moona.dev/senda/wp-content/uploads/2025/08/arrow_icon.svg')};
@@ -17,9 +21,24 @@ export default function Button({copy, fnc, icon, round=true}: {copy?:string, fnc
     if(icon==="play"){setIconSrc('https://moona.dev/senda/wp-content/uploads/2025/08/play_icon.svg')};
   },[icon])
 
+  useEffect(()=>{
+    setTimeout(() => {
+      if(buttonTextRef.current && newCopy !== copy) {(buttonTextRef.current as HTMLElement).style.opacity = '0'};
+      setNewCopy(copy);
+    }, 250);
+  },[copy])
+
   return (
     <>
-      <button className={`button-general`} onClick={ fnc }>
+      <button className={`button-general`} onClick={ (e) => {
+        btnTextOut(e.target)
+
+        if(fnc) {fnc(e)}
+        setTimeout(() => {
+          btnTextIn(e.target)
+          if(buttonTextRef.current){(buttonTextRef.current as HTMLElement).style.opacity = '1'}
+        }, 250 + 10);
+      } }>
         { icon &&
           <div className={`btn__icon btn ${icon === "logo" && 'logo-icon'} ${round ? 'rounded-button' : 'squared-button'}`}>
             <Image 
@@ -31,11 +50,9 @@ export default function Button({copy, fnc, icon, round=true}: {copy?:string, fnc
 
         { copy &&
           <div className={`btn__copy btn ${round ? 'rounded-button' : 'squared-button'}`}>
-            <p className="btn__copy__text">{ copy }</p>
+            <p ref={buttonTextRef} className="btn__copy__text">{ newCopy }</p>
           </div>
         }
-
-
       </button>
     </>
   );

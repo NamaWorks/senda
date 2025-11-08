@@ -37,7 +37,7 @@ export default function Nav() {
     <nav>
       <div className="nav__permanent">
         <div className="nav__permanent__logo">
-        <Button fnc={test} icon={`logo`}/>
+        <Button fnc={handleLogoClick} icon={`logo`}/>
         </div>
         <div className="nav__permanent__btn">
           <Button
@@ -123,6 +123,6 @@ export default function Nav() {
   );
 }
 
-function test(): void {
+function handleLogoClick(): void {
   redirect("/")
 }

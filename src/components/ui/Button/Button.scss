@@ -10,6 +10,11 @@
   
   .btn {
     @include mixins.button-general;
+    overflow: hidden;
+
+    p {
+      pointer-events: none;
+    };
 
     &.rounded-button {
       border-radius: 10rem;

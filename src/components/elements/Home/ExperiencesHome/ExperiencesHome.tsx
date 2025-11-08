@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useContext, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useCallback, useContext, useEffect, useState } from "react";
 import "./ExperiencesHome.scss";
 import { ExperiencesContext } from "@/utils/contexts/contexts";
 import { ExperienceDataType, ExperiencesContextType } from "@/utils/types";
@@ -9,6 +9,7 @@ import Button from "@/components/ui/Button/Button";
 import Image from "next/image";
 import { WPImage, WPImageACF } from "@/utils/interfaces";
 import { useRouter } from "next/navigation";
+import { paragraphIn, paragraphOut, titleIn, titleOut } from "@/utils/actions/clientActions/animations/buttonTriggered/textButtonAnimations";
 
 export default function ExperiencesHome () {
 
@@ -67,9 +68,7 @@ export default function ExperiencesHome () {
                   key={`home-tab-${experience?.id}-${i}`}
                   className="home__experiences__tabs__tab"
                   onClick={() => {
-                    if(setSelectedExperience) {
-                      setSelectedExperience(title as string)
-                    }
+                    if(selectedExperience !== title) handleTagClick(setSelectedExperience, title)
                   }}
                 >
                   <div className="home__experiences__tabs__tab__index">
@@ -113,7 +112,7 @@ export default function ExperiencesHome () {
                   <Button
                     copy={tabName ? `#${tabName}` : ""}
                     fnc={() => {
-                      router.push('/experiences')
+                      router.push('/experiences');
                     }}
                     round={false}
                   />
@@ -142,4 +141,18 @@ export default function ExperiencesHome () {
       </div>
     </>
   );
+};
+
+function handleTagClick (setSelectedExperience:Dispatch<SetStateAction<string | undefined>> | undefined, title:string) {
+    // if(setSelectedExperience) {
+    titleOut('.home__experiences__selected__heading');
+    paragraphOut('.home__experiences__selected__description');
+    setTimeout(() => {
+      if(setSelectedExperience)setSelectedExperience(title as string);
+      setTimeout(() => {
+        titleIn('.home__experiences__selected__heading')
+        paragraphIn('.home__experiences__selected__description')
+      }, 100);
+    }, 1000);
+  // }
 };

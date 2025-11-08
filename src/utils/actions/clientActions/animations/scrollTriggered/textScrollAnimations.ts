@@ -31,7 +31,7 @@ function paragraphScrollWordsAnimation () {
         // scale:0.7,
         // transformOrigin: "left top",
         // letterSpacing: 8,
-        duration: 0.1,
+        duration: 0.2,
         stagger: 0.05,
         ease: "sine.out",
         // ease: "custom",
@@ -40,7 +40,7 @@ function paragraphScrollWordsAnimation () {
           trigger: el,          
           start: "top 90%",
           end: "bottom 0%",    
-          toggleActions: "play reverse play reverse", // onEnter, onLeave, onEnterBack, onLeaveBack
+          toggleActions: "play none none none", // onEnter, onLeave, onEnterBack, onLeaveBack
           // markers: true, 
           // scrub: 1 // possible values true, false ,1 , 2, 3 ...
         },
