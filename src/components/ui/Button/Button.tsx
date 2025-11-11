@@ -1,4 +1,4 @@
-import { btnTextIn, btnTextOut } from "@/utils/actions/clientActions/animations/buttonTriggered/textButtonAnimations";
+import { btnTextIn, btnTextOut } from "@/utils/actions/clientActions/animations/actionTriggered/textInteractionAnimations";
 import "./Button.scss";
 
 import Image from "next/image";
@@ -22,23 +22,26 @@ export default function Button({copy, fnc, icon, round=true}: {copy?:string, fnc
   },[icon])
 
   useEffect(()=>{
-    setTimeout(() => {
-      if(buttonTextRef.current && newCopy !== copy) {(buttonTextRef.current as HTMLElement).style.opacity = '0'};
-      setNewCopy(copy);
-    }, 250);
+      if(buttonTextRef.current) {
+        btnTextOut(buttonTextRef.current);
+      };
+
+      setTimeout(() => {
+        setNewCopy(copy);
+        if(buttonTextRef.current) {(buttonTextRef.current as HTMLElement).style.opacity = '0'};
+        setTimeout(() => {
+          if(buttonTextRef.current) {
+            btnTextIn(buttonTextRef.current);
+            (buttonTextRef.current as HTMLElement).style.opacity = '1';
+            };
+        }, 50);
+
+      }, 250);
   },[copy])
 
   return (
     <>
-      <button className={`button-general`} onClick={ (e) => {
-        btnTextOut(e.target)
-
-        if(fnc) {fnc(e)}
-        setTimeout(() => {
-          btnTextIn(e.target)
-          if(buttonTextRef.current){(buttonTextRef.current as HTMLElement).style.opacity = '1'}
-        }, 250 + 10);
-      } }>
+      <button className={`button-general`} onClick={ (e) => { if(fnc) {fnc(e)} }}>
         { icon &&
           <div className={`btn__icon btn ${icon === "logo" && 'logo-icon'} ${round ? 'rounded-button' : 'squared-button'}`}>
             <Image 

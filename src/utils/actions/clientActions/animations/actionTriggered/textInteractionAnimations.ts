@@ -1,4 +1,4 @@
-import { addAnimatedElementTag, animatedTagChecker } from "../../domManipulation/elementAnimatedTags";
+// import { addAnimatedElementTag, animatedTagChecker } from "../../domManipulation/elementAnimatedTags";
 
 import { gsap } from "gsap";
 import { SplitText } from "gsap/all";
@@ -154,16 +154,16 @@ export function titleIn (item: EventTarget | Element | string) {
 };
 
 export function btnTextOut (item: EventTarget | Element | string) {
-  let el: Element | null = null;
+  let el: Element | null | EventTarget = null;
 
   if (typeof item === 'string') {
     el = document.querySelector(item);
   } else {
-    el = (item as Element).querySelector('p');
+    el = item as Element;
   }
 
   if (!el) return;
-  // (el as HTMLElement).style.opacity = '1';
+  (el as HTMLElement).style.opacity = '1';
 
   const split = new SplitText(el as HTMLElement, {
     type: "chars",
@@ -181,16 +181,17 @@ export function btnTextOut (item: EventTarget | Element | string) {
 };
 
 export function btnTextIn (item: EventTarget | Element | string) {
-  let el: Element | null = null;
+  let el: Element | null | EventTarget = null;
 
   if (typeof item === 'string') {
     el = document.querySelector(item);
   } else {
-    el = (item as Element).querySelector('p');
+    el = item as Element;
   }
 
   if (!el) return;
 
+  (el as HTMLElement).style.opacity = '1';
   (el as HTMLElement).style.position = '0, 200%';
 
   const split = new SplitText(el as HTMLElement, {

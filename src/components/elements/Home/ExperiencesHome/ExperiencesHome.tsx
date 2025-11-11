@@ -1,7 +1,7 @@
 "use client";
 
-import { Dispatch, SetStateAction, useCallback, useContext, useEffect, useState } from "react";
 import "./ExperiencesHome.scss";
+import { Dispatch, SetStateAction, useCallback, useContext, useEffect, useRef, useState } from "react";
 import { ExperiencesContext } from "@/utils/contexts/contexts";
 import { ExperienceDataType, ExperiencesContextType } from "@/utils/types";
 import { fetchData, fetchMedia } from "@/utils/actions/serverActions/actions";
@@ -9,19 +9,19 @@ import Button from "@/components/ui/Button/Button";
 import Image from "next/image";
 import { WPImage, WPImageACF } from "@/utils/interfaces";
 import { useRouter } from "next/navigation";
-import { paragraphIn, paragraphOut, titleIn, titleOut } from "@/utils/actions/clientActions/animations/buttonTriggered/textButtonAnimations";
+import { paragraphIn, paragraphOut, titleIn, titleOut } from "@/utils/actions/clientActions/animations/actionTriggered/textInteractionAnimations";
+import { imageAnimationIn, imageAnimationOut } from "@/utils/actions/clientActions/animations/actionTriggered/imagesInteractionAnimations";
 
 export default function ExperiencesHome () {
 
   const { experiencesData, setExperiencesData, selectedExperience, setSelectedExperience } = useContext(ExperiencesContext) as ExperiencesContextType;
-
   const [ highlightedExperience, setHighlightedExperience ] = useState<ExperienceDataType | undefined>(undefined);
-
   const [ experienceImage, setExperienceImage] = useState<WPImage | WPImageACF | undefined>(undefined);
+
+  const imageRef = useRef(null);
 
   const router = useRouter();
 
-  
   const getData = useCallback(
     async () => {
       const data = await fetchData('experience');
@@ -31,11 +31,12 @@ export default function ExperiencesHome () {
   )
 
   const getExperienceToShow = useCallback(
+
     async () => {
       const toShow = experiencesData?.find((exp)=>{return (exp as ExperienceDataType).acf.title.toString().toLowerCase() === selectedExperience?.toString().toLowerCase()});
       setHighlightedExperience(toShow);
-      const experienceImage = await fetchMedia(Number(toShow?.acf.home.image));
-      setExperienceImage(experienceImage);
+      // const experienceImage = await fetchMedia(Number(toShow?.acf.home.image));
+      // setExperienceImage(experienceImage);
     }
     ,
     [experiencesData, selectedExperience]
@@ -54,6 +55,20 @@ export default function ExperiencesHome () {
       }
 
   }, [highlightedExperience, setHighlightedExperience, getExperienceToShow, getData, experiencesData]);
+
+  useEffect(()=>{
+    if(imageRef.current){
+      // imageAnimationIn(imageRef.current);
+    };
+    
+    async function getImageData () {
+      const experienceImage = await fetchMedia(Number(highlightedExperience?.acf.home.image));
+      setExperienceImage(experienceImage);
+    }
+    // Prepare a duplicate and change only one, so we have an overlapping animation
+    // if(imageRef.current){imageAnimationOut(imageRef.current)};
+    getImageData()
+  },[highlightedExperience])
 
   return (
     <>
@@ -129,7 +144,7 @@ export default function ExperiencesHome () {
           })()}
         </div>
 
-        <div className="home__experiences__image">
+        <div className="home__experiences__image" ref={imageRef}>
           {experienceImage?.guid?.rendered && (
             <Image
               fill={true}
