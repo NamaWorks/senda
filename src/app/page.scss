@@ -107,7 +107,7 @@
 .home__claim {
   position: relative;
   background-color: globals.$senda-color-white-200;
-  padding-bottom: calc(globals.$padding-general-100 + 15dvw);
+  padding-bottom: calc(globals.$padding-general-100 + 10dvw);
   
   .home__claim__texts {
     @include mixins.flex-center;

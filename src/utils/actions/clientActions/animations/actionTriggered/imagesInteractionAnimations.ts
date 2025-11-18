@@ -11,10 +11,12 @@ export function imageAnimationIn (item: EventTarget | Element | string) {
 
   if (!el) return;
 
-    gsap.to(el, {
-    height: "100%",
+    gsap.fromTo(el, {
+    height: "0%",
     duration: 2,
     ease: "power3.out",
+  }, {
+    height: "100%",
   });
 };
 

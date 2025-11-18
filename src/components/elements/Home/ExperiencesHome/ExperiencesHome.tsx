@@ -16,9 +16,11 @@ export default function ExperiencesHome () {
 
   const { experiencesData, setExperiencesData, selectedExperience, setSelectedExperience } = useContext(ExperiencesContext) as ExperiencesContextType;
   const [ highlightedExperience, setHighlightedExperience ] = useState<ExperienceDataType | undefined>(undefined);
-  const [ experienceImage, setExperienceImage] = useState<WPImage | WPImageACF | undefined>(undefined);
+  const [ experienceImage, setExperienceImage] = useState<WPImage | WPImageACF |  undefined>(undefined);
+  const [ duplicatedExperienceImage, setDuplicatedExperienceImage ] = useState<WPImage | WPImageACF |  undefined>(undefined);
 
   const imageRef = useRef(null);
+  const duplicatedImageRef = useRef(null);
 
   const router = useRouter();
 
@@ -56,19 +58,40 @@ export default function ExperiencesHome () {
 
   }, [highlightedExperience, setHighlightedExperience, getExperienceToShow, getData, experiencesData]);
 
+  // pseudo code block:
+  // - we need to listen to the change of selected experience
+  // - once we have a change on the selected experience, we should modify the duplicated image
+  // - after that, move that duplicated image to the front, over the first image
+  // - then, reset the positions and make the front image the new selected one
+
+  // use effect for listening to the changes in the highlighted experience
   useEffect(()=>{
-    if(imageRef.current){
-      // imageAnimationIn(imageRef.current);
-    };
-    
     async function getImageData () {
       const experienceImage = await fetchMedia(Number(highlightedExperience?.acf.home.image));
-      setExperienceImage(experienceImage);
+      setDuplicatedExperienceImage(experienceImage);
     }
-    // Prepare a duplicate and change only one, so we have an overlapping animation
-    // if(imageRef.current){imageAnimationOut(imageRef.current)};
-    getImageData()
-  },[highlightedExperience])
+
+      if(duplicatedImageRef.current) { 
+        getImageData();
+      };
+    
+  },[highlightedExperience, setHighlightedExperience]);
+
+
+  // use effect for listening to updated images
+  useEffect(()=>{
+    if(duplicatedImageRef.current){imageAnimationIn(duplicatedImageRef.current);}
+        const interval = setInterval(() => {
+      if( experienceImage === duplicatedExperienceImage ){
+        setExperienceImage(experienceImage); // => check this, as we have the experienceImage dependency
+        if(duplicatedImageRef.current){(duplicatedImageRef.current as HTMLElement).style.height = "0%"};
+        // console.log('test interval') // => is this working?
+        clearInterval(interval)
+        }
+      }, 500);
+
+
+  },[duplicatedExperienceImage, experienceImage])
 
   return (
     <>
@@ -149,6 +172,16 @@ export default function ExperiencesHome () {
             <Image
               fill={true}
               src={experienceImage.guid.rendered}
+              alt={String(highlightedExperience?.acf?.home?.image ?? "")}
+            />
+          )}
+        </div>
+
+        <div className="home__experiences__image duplicated__image" ref={duplicatedImageRef}>
+          {duplicatedExperienceImage?.guid?.rendered && (
+            <Image
+              fill={true}
+              src={duplicatedExperienceImage.guid.rendered}
               alt={String(highlightedExperience?.acf?.home?.image ?? "")}
             />
           )}
