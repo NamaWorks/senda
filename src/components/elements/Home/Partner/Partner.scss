@@ -20,6 +20,7 @@
     position: relative;
     overflow: hidden;
     z-index: 1;
+    pointer-events: none;
 
     img {
       display: flex;
@@ -30,15 +31,21 @@
 
   .home__partners__brand__image {
     @include mixins.flex-center;
-    width: 100%;
+    width: 0%;
     height: 100%;
     position: absolute;
     // z-index: 0;
+    // scale: 0;
     scale: 1;
+    pointer-events: none;
+    transform-origin: 100% 100%;
+    border-radius: globals.$rounded-010;
+    overflow: hidden;
 
     img {
       display: flex;
       object-fit: cover;
+      // object-position: bottom right;
       object-position: center;
     };
   }

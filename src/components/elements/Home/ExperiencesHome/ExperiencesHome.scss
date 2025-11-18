@@ -6,7 +6,7 @@
   @include mixins.flex-center;
   flex-direction: column;
   justify-content: space-between;
-  height: 70dvh;
+  height: 62dvh;
   position: relative;
 
   .home__experiences__container {
@@ -70,6 +70,8 @@
     @include mixins.flex-center;
     justify-content: space-between;
     width: 80dvw;
+    position: relative;
+    top: -12dvh;
     padding: globals.$padding-general-012 0;
 
     .home__experiences__selected__texts {

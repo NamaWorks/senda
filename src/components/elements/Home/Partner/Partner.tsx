@@ -4,8 +4,8 @@
 import "./Partner.scss";
 
 import { fetchMedia } from "@/utils/actions/serverActions/actions";
-// import { WPImage } from "@/utils/interfaces";
 import Image from "next/image";
+// import { WPImage } from "@/utils/interfaces";
 // import { useEffect, useState } from "react";
 
 export default async function Partner ({ brandName, brandLogo, backgroundImage, i }: {brandName: string, brandLogo: number | string | undefined, backgroundImage: number | string | undefined, i: number}) {
@@ -39,8 +39,6 @@ export default async function Partner ({ brandName, brandLogo, backgroundImage, 
         <Image 
           src={brandLogoWpImage?.guid.rendered as string} 
           fill={true} 
-          // height={400}
-          // width={600}
           alt={brandLogoWpImage?.alt_text as string || brandLogoWpImage?.title.rendered as string}
         />
       </div>
