@@ -98,24 +98,37 @@ export default function Nav() {
             <div className="nav__toggle__half nav__toggle__links">
 
               <div className="nav__toggle__half__side">
-                <Link href={navData?.acf.nav_bar?.about.url as string} className="nav__toggle__half__side__links">{navData?.acf.nav_bar?.about.title}</Link>
+                <Link 
+                  href={navData?.acf.nav_bar?.about.url as string} 
+                  className="nav__toggle__half__side__links"
+                  onClick={()=>{setToggled(false)}}
+                  >
+                    {navData?.acf.nav_bar?.about.title}
+                </Link>
                 <div className="nav__toggle__half__side__navigation">
                   <Link
                     className="nav__toggle__half__side__links"
                     href={"experiences/" + navData?.acf.nav_bar?.climbing.url as string}
+                    onClick={()=>{setToggled(false)}}
                   >
                     {navData?.acf.nav_bar?.climbing.title}
                   </Link>
 
                   <ul>
-                    <li className="nav__toggle__half__side__links">
+                    <li className="nav__toggle__half__side__links"
+                      onClick={()=>{setToggled(false); redirect('experiences')}}
+                    >
                       <ExperienceButton experience={navData?.acf.nav_bar?.hiking.title.replaceAll('+',"") as string} />
                     </li>
 
-                    <li className="nav__toggle__half__side__links">
+                    <li className="nav__toggle__half__side__links"
+                      onClick={()=>{setToggled(false); redirect('experiences')}}
+                    >
                       <ExperienceButton experience={navData?.acf.nav_bar?.yoga.title.replaceAll('+',"") as string} />
                     </li>
-                    <li className="nav__toggle__half__side__links">
+                    <li className="nav__toggle__half__side__links"
+                      onClick={()=>{setToggled(false); redirect('experiences')}}
+                    >
                       <ExperienceButton experience={navData?.acf.nav_bar?.photography.title.replaceAll('+',"") as string} />
                     </li>
                   </ul>

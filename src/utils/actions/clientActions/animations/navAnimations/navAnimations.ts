@@ -1,6 +1,5 @@
 import { gsap } from "gsap";
 import { CustomEase } from "gsap/all";
-import { btnTextIn, paragraphIn, titleIn } from "../actionTriggered/textInteractionAnimations";
 
 CustomEase.create("niceAndClean", ".25,.00,.00,.75");
 
