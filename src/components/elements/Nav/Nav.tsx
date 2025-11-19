@@ -4,7 +4,7 @@ import { ComponentDataType } from "@/utils/types";
 import { WPImage } from "@/utils/interfaces";
 import "./Nav.scss";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   fetchComponent,
   fetchMedia,
@@ -15,13 +15,19 @@ import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import ExperienceButton from "@/components/ui/ExperienceButton/ExperienceButton";
+import { navAnimationEnter, navAnimationOut } from "@/utils/actions/clientActions/animations/navAnimations/navAnimations";
 
 export default function Nav() {
   const [toggled, setToggled] = useState<boolean>(false);
+  const [toggledVisibility, setToggledVisibility] = useState<boolean>(false);
   const [navData, setNavData] = useState<null | undefined | ComponentDataType>(null);
   const [imageA, setImageA] = useState<WPImage | undefined>(undefined);
   const [imageB, setImageB] = useState<WPImage | undefined>(undefined);
 
+  const imageARef = useRef(null);
+  const imageBRef = useRef(null);
+
+  // useEffect for fetching data
   useEffect(() => {
     const getData = async () => {
       const data = await fetchComponent("nav_bar");
@@ -33,6 +39,18 @@ export default function Nav() {
     getData();
   }, []);
 
+  // useEffect for controlling the images animations
+  useEffect(()=>{
+    if(toggled && imageARef.current && imageBRef){
+      navAnimationEnter();
+    } else {
+      navAnimationOut();
+      setTimeout(() => {
+        setToggledVisibility(false)
+      }, 1000);
+    };
+  }, [ imageARef, imageBRef, toggled ])
+
   return (
     <nav>
       <div className="nav__permanent">
@@ -43,18 +61,24 @@ export default function Nav() {
           <Button
             copy={toggled ? "close" : "menu"}
             fnc={() => {
-              setToggled(!toggled);
+              if(!toggled){
+                setToggled(!toggled);
+                setToggledVisibility(!toggledVisibility);
+              } else if(toggled){
+                setToggled(!toggled)
+              }
             }}
             // icon={`none`}
           />
         </div>
       </div>
 
-      {toggled && (
+      {toggledVisibility && (
         <>
           <div className="nav__toggle">
+            <div className="nav__toggle__bg"></div>
             <div className="nav__toggle__half">
-              <div className="nav__toggle__half__image">
+              <div className="nav__toggle__half__image" id="nav__toggle__half__image__a" ref={imageARef}>
                 <Image
                   alt="image"
                   src={imageA?.guid?.rendered || "none"}
@@ -62,7 +86,7 @@ export default function Nav() {
                 />
               </div>
 
-              <div className="nav__toggle__half__image">
+              <div className="nav__toggle__half__image" id="nav__toggle__half__image__b" ref={imageBRef}>
                 <Image
                   alt="image"
                   src={imageB?.guid?.rendered || "none"}

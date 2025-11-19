@@ -4,7 +4,7 @@ import { addAnimatedElementTag, animatedTagChecker } from "../../domManipulation
 export function initPartnersHoverAnimation () {
   const partnersCards = document.querySelectorAll('.home__partners__brand');
   partnersCards.forEach((item, i) =>{
-    if(animatedTagChecker(item)){
+    if(animatedTagChecker(item)){ // this is for checking if the element has been already animated
       item.addEventListener('mouseover', (e)=>{
         const bgImage = (e.target as Element).querySelector('.home__partners__brand__image');
         gsap.to(bgImage, {
