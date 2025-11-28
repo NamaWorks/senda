@@ -144,6 +144,7 @@
     @include typography.desktop-title-h3;
     color: globals.$senda-color-black-100;
     flex-direction: column;
+    z-index: 2;
 
     .home__about__title__heading-a {
       align-self: flex-start;
@@ -161,6 +162,8 @@
     align-items: end;
     gap: globals.$gap-general-010;
     justify-content: flex-end;
+    position: relative;
+    z-index: 2;
 
     .home__about__founder__text {
       @include typography.desktop-copy-c1;
@@ -184,6 +187,20 @@
         height: 100%;
         width: 100%
       }
+    };
+
+  };
+
+  .home__about__canva {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+    z-index: 1;
+
+    canvas {
+      height: 100%;
+      width: 100%;
     };
   };
 };

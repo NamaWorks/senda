@@ -28,6 +28,9 @@
     .home__experiences__tabs__tab:nth-child(3){
       background-color: globals.$senda-color-orange;
     };
+    .home__experiences__tabs__tab:nth-child(4){
+      background-color: globals.$senda-color-white-100;
+    };
 
     .home__experiences__tabs__tab {
       @include mixins.flex-center;
@@ -72,6 +75,7 @@
     width: 80dvw;
     position: relative;
     top: -12dvh;
+    max-height: 20dvh;
     padding: globals.$padding-general-012 0;
 
     .home__experiences__selected__texts {

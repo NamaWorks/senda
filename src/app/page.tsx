@@ -8,6 +8,7 @@ import Image from 'next/image';
 import Partner from '@/components/elements/Home/Partner/Partner';
 import { HomeDataType, pageElementDataType } from '@/utils/types';
 import ExperiencesHome from '@/components/elements/Home/ExperiencesHome/ExperiencesHome';
+import CanvaTopography from '@/components/elements/Home/CanvaTopography/CanvaTopography';
 
 
 export default async function Home() {
@@ -72,6 +73,10 @@ export default async function Home() {
               <Image src={alexImage?.guid.rendered as string} alt={alexImage?.alt_text as string} fill={true}></Image>
             </div>
           </div>
+          
+            <div className="home__about__canva">
+              <CanvaTopography/>
+            </div>
 
         </section>
 
