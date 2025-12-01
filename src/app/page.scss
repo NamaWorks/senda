@@ -197,10 +197,25 @@
     width: 100%;
     pointer-events: none;
     z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     canvas {
       height: 100%;
       width: 100%;
+
+    };
+
+    div{
+      position: absolute;
+      bottom: 0%;
+      height: 20%;
+      width: 100%;
+      // background: globals.$senda-color-blue-100;
+      background: red;
+      background: linear-gradient(0deg, globals.$senda-color-blue-100, globals.$senda-color-blue-000);
+      // background: radial-gradient(circle, globals.$senda-color-blue-000 0%, globals.$senda-color-blue-100 80%);
     };
   };
 };

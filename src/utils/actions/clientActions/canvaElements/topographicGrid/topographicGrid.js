@@ -1,7 +1,10 @@
 import canvasSketch from 'canvas-sketch';
 
 
+
 export default function createTopographicGrid (canvasElement) {
+
+  const numberOfLines = 120;
 
   const settings = {
     canvas: canvasElement,
@@ -14,45 +17,45 @@ export default function createTopographicGrid (canvasElement) {
 
   const sketch = ({ canvas }) => {
 
-    points = [
-      new Point({ x: 200, y: 540 }),
-      // new Point({ x: 600, y: 300, controller: true }),
-      new Point({ x: 600, y: 300 }),
-      new Point({ x: 880, y: 540 }),
-      new Point({ x: 600, y: 700 }),
-      new Point({ x: 640, y: 900 }),
-    ];
-
-    document.addEventListener("mousemove", onMouseMove)
     elCanvas = canvas
 
+    let canvasW = elCanvas.getAttribute('width');
+    let canvasH = elCanvas.getAttribute('height');
+    
+    points = [
+      new Point({ x: canvasW*0.0, y: canvasH*0.4 }),
+      // new Point({ x: 600, y: 300, controller: true }),
+      new Point({ x: canvasW*0.25, y: canvasH*0.3, controller: true}),
+      // new Point({ x: canvasW*0.5, y: canvasH*0.4, controller: true}),
+      // new Point({ x: canvasW*0.75, y: canvasH*0.7, controller: true}),
+      new Point({ x: canvasW*1.5, y: canvasH*0.9 }),
+    ];
+
+    document.addEventListener("mousemove", (e)=>{onMouseMove(e)})
+
     return ({ context, width, height }) => {
-      // context.fillStyle = "white";
       context.fillStyle = "#d9e2eb";
       context.fillRect(0, 0, width, height);
-
-      context.beginPath();
-      context.moveTo(points[0].x, points[0].y);
-
-      for (let i = 1; i < points.length; i+= 1 ) {
-        context.lineTo(points[i].x, points
-          [i].y);
-      }
-
-      context.stroke();
 
       // context.beginPath();
       // context.moveTo(points[0].x, points[0].y);
 
-      // for (let i = 1; i < points.length; i+= 2 ) {
-      //   context.quadraticCurveTo(points[i].x, points
-      //     [i].y, points[i + 1].x, points[i + 1].y);
+      // for (let i = 1; i < points.length; i+= 1 ) {
+      //   context.lineTo(points[i].x, points
+      //     [i].y);
       // }
 
       // context.stroke();
 
-      context.beginPath();
+      for (let j = 0; j < numberOfLines; j++) {
 
+      const middle = Math.round(numberOfLines/2);
+      const distanceToMiddle = Math.abs(middle - j);
+      const modifier = Math.abs(middle - distanceToMiddle);
+      // console.log(distanceToMiddle)
+        
+      context.beginPath();
+        
       for (let i = 0; i < points.length -1; i++) {
         const curr = points[i + 0];
         const next = points[i + 1];
@@ -60,45 +63,64 @@ export default function createTopographicGrid (canvasElement) {
         const mx = curr.x + (next.x - curr.x) * 0.5;
         const my = curr.y + (next.y - curr.y) * 0.5;
 
-        // context.beginPath();
-        // context.arc(mx, my, 5, 0, Math.PI * 2)
-        // context.fillStyle = 'blue';
-        // context.fill();
-        if( i == 0) context.moveTo(curr.x, curr.y);
+        if( i == 0) context.moveTo(curr.x*j/2, curr.y*j/2);
+        else if (distanceToMiddle<=1) context.quadraticCurveTo(curr.x*modifier, curr.y*modifier, next.x*modifier, next.y*modifier)
         else if (i == points.length - 2) context.quadraticCurveTo(curr.x, curr.y, next.x, next.y)
-        else context.quadraticCurveTo(curr.x, curr.y, mx, my)
+        else context.quadraticCurveTo(curr.x*modifier, curr.y*modifier, mx*modifier, my*modifier)
       }
-      context.lineWidth = 4;
-      context.strokeStyle = 'blue';
+      context.lineWidth = 2;
+      context.strokeStyle = '#b0c0da';
       context.stroke();
 
       points.forEach((point)=>{
-        point.draw(context);
+        // point.draw(context);
       })
 
     };
+    }
+
   };
 
+  
+  
+  const easeAmount = 0.001;
   function onMouseMove (e) {
-    // console.log(e.offsetX, e.offsetY);
+    let animationTimeout = null;
     // const x = (e.clientX / elCanvas.offsetWidth) * elCanvas.width;
     // const y = (e.clientY / elCanvas.offsetHeight) * elCanvas.height;
-    const x = e.clientX;
-    const y = e.clientY;
-    // console.log(x,y)
 
-    // if(points[1].controller){
-      // points[1].x = x;
-      // points[1].y = y;
-    // }
+    // const x = e.clientX;
+    // const y = e.clientY;
 
-    points.forEach((point,i) => {
+    let moveAmount = {x:0 , y:0};
+
+    points.forEach((point) => {
       if(point.controller){
-        point.x = x/i;
-        point.y = y/i;
-      }
-    })
+        if(!animationTimeout) {
+          animationTimeout = window.requestAnimationFrame(()=>{step(point)});
+        }
+      };
+    });
 
+    function step (point) {
+        const x = e.clientX;
+        const y = e.clientY;
+        moveAmount = {x: x - point.x, y: y -point.y};
+
+        if(Math.abs(moveAmount.x) > 1.1 || Math.abs(moveAmount.y) > 1.1){
+          point.x += moveAmount.x * easeAmount;
+          point.y += moveAmount.y * easeAmount; 
+  
+          moveAmount.x *= 1-easeAmount;
+          moveAmount.y *= 1-easeAmount;
+
+          requestAnimationFrame(()=>{step(point)})
+        } else {
+          moveAmount = {x:0 , y:0};
+          animationTimeout = null;
+        }
+
+      }      
   }
 
   canvasSketch(sketch, settings);
@@ -132,4 +154,4 @@ export default function createTopographicGrid (canvasElement) {
   }
 };
 
-createTopographicGrid();
+// createTopographicGrid();
