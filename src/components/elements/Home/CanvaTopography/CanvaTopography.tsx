@@ -16,7 +16,7 @@ export default function CanvaTopography () {
   return (
     <>
       <canvas ref={canvasRef}>
-      </canvas>
+        </canvas>
       <div></div>
     </>
   )

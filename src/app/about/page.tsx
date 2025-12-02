@@ -6,6 +6,7 @@ import { AboutDataType, pageElementDataType } from "@/utils/types";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { WPImage } from "@/utils/interfaces";
+import CanvaTopography from "@/components/elements/Home/CanvaTopography/CanvaTopography";
 
 export default function About() {
 
@@ -42,6 +43,9 @@ export default function About() {
           <p className="about__hero__text">
             {aboutData?.hero.heading}
           </p>
+        </div>
+        <div className="about__hero__canva">
+          <CanvaTopography/>
         </div>
       </section>
 

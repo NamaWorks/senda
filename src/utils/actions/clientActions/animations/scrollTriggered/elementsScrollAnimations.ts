@@ -3,6 +3,7 @@ import { addAnimatedElementTag, animatedTagChecker } from "../../domManipulation
 
 export function addElementsScrollAnimations () {
   homeExperienceTabsScrollAnimations();
+  aboutTabsScrollAnimations();
 };
 
 
@@ -22,6 +23,36 @@ function homeExperienceTabsScrollAnimations () {
       end: "bottom 90%",
       toggleActions: "play none none reverse",
       scrub: 2   // <— enable if you want scroll-linked movement
+    },
+  });
+
+
+    tabs.forEach((el, i, parent) => {
+      if(animatedTagChecker(el)) {
+        addAnimatedElementTag(el);
+      } else {
+        // console.warn('element already animated or null', el)
+      }
+    })
+  }
+};
+
+function aboutTabsScrollAnimations () {
+  const tabs = document.querySelectorAll('.about__images__item');
+  if(tabs.length>=0) {
+
+  gsap.to(".about__images__item", {
+    yPercent: (i) => -10 + i * -10, // each item slightly higher than previous
+    // opacity: 1,
+    // duration: 1,
+    // ease: "power2.out",
+    stagger: 0.15,
+    scrollTrigger: {
+      trigger: ".about__images",
+      start: "top 100%",
+      end: "top 50%",
+      toggleActions: "play none none reverse",
+      scrub: 1   // <— enable if you want scroll-linked movement
     },
   });
 

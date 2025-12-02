@@ -16,14 +16,24 @@ body {
 .about__hero {
   @include mixins.flex-center;
   padding: globals.$padding-general-100;
-  height: 80dvh;
+  height: 100dvh;
   .about__hero__container {
+    z-index: 2;
 
     .about__hero__text {
       @include typography.desktop-copy-c3;
       color: globals.$senda-color-black-100;
-      text-align: center
+      text-align: center;
+      position: relative;
+      top: -5dvh;
     };
+  };
+
+  .about__hero__canva {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    opacity: 0.35;
   };
 };
 
@@ -32,9 +42,9 @@ body {
   // padding:0 globals.$padding-general-100;
   flex-direction: row;
   flex-wrap: nowrap;
-  height: 25dvw;
+  height: 0;
   position: relative;
-  top: 80px;
+  // top: 5dvw;
   z-index: 1;
 
   .empty__item {
@@ -46,14 +56,16 @@ body {
     position: relative;
     width: 100%;
     height: 100%;
+    min-height: 25dvw;
     min-width: 25dvw;
     overflow: hidden;
+    // top: 2dvh;
 
-    @for $i from 1 through 4 {
-      &:nth-child(#{$i}) {
-        top: #{ ($i - 1) * -40 }px;
-      };
-    };
+    // @for $i from 1 through 4 {
+    //   &:nth-child(#{$i}) {
+    //     top: #{ ($i - 1) * -40 }px;
+    //   };
+    // };
     
     img {
       display: flex;
@@ -64,12 +76,12 @@ body {
 
 .about__video {
   @include mixins.flex-center;
-  // width: 100%;
-  // height: 100%;
-  min-height: 100dvh;
+  width: 100%;
+  height: 100%;
+  min-height: 120dvh;
   min-width: 100dvw;
   position: relative;
-  top: -80px;
+  top: -10dvh;
   z-index: 0;
 
   .about__video__overlay {
