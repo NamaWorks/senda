@@ -142,12 +142,12 @@ body {
       // padding-bottom: globals.$padding-general-050;
       
       
-      @for $i from 1 through 4 {
-        &:nth-child(#{$i}){
-          top: #{($i - 1) * -30}px;
-          // padding-bottom: #{($i - 1) * globals.$padding-general-050};
-        }
-      };
+      // @for $i from 1 through 4 {
+      //   &:nth-child(#{$i}){
+      //     top: #{($i - 1) * -30}px;
+      //     // padding-bottom: #{($i - 1) * globals.$padding-general-050};
+      //   }
+      // };
       
       .value__index {
         @include typography.desktop-title-h8;

@@ -65,14 +65,20 @@ nav {
     };
     
     .nav__toggle__links {
+      // padding: globals.$padding-general-006;
+      // padding-top: globals.$padding-general-050;
+      // padding-bottom: globals.$padding-general-050;
+
       .nav__toggle__half__side {
         @include mixins.flex-center;
         align-items: start;
         flex-direction: column;
         justify-content: start;
         gap: globals.$gap-general-050;
-        width: 100%;
+        width: 90%;
         height: 50%;
+        padding: globals.$padding-general-010;
+
 
         .nav__toggle__half__side__navigation {
           @include typography.desktop-copy-c4;
