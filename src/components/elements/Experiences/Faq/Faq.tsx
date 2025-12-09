@@ -5,10 +5,11 @@ import "./Faq.scss";
 import { fetchComponent } from "@/utils/actions/serverActions/actions";
 import { ComponentDataType, FaqDataType } from "@/utils/types";
 import Image from "next/image";
+import FaqItem from "@/components/ui/FaqItem/FaqItem";
 
 export default function Faq() {
 
-  const [ faqData, setFaqData] = useState<ComponentDataType | undefined>(undefined);
+  const [ faqData, setFaqData ] = useState<ComponentDataType | undefined>(undefined);
 
   useEffect(()=>{
     const getData = async () => {
@@ -34,20 +35,8 @@ export default function Faq() {
       faqData?.acf?.faq && 
       Object.keys(faqData?.acf.faq as FaqDataType).map((item, i) => {
         return (
-          <div className={`faq__item`} key={`faq-item-${i}`}>
-            <div className="faq__item__question">
-              <p>{(faqData?.acf.faq as FaqDataType)[item as keyof FaqDataType].question}</p>
-            </div>
-
-            <div className="faq__item__answer">
-              <p>{(faqData?.acf.faq as FaqDataType)[item as keyof FaqDataType].answer}</p>
-            </div>
-
-            <div className="faq__item__arrow">
-              <Image src="https://moona.dev/senda/wp-content/uploads/2025/08/interface-arrows-left-circle-1-arrow-keyboard-circle-button-left.svg" alt="arrow image" fill={true}/>
-            </div>
-          </div>
-        )
+          <FaqItem faqData={faqData} index={i} item={item} key={i}/>
+        );
       })
     }
     </div>

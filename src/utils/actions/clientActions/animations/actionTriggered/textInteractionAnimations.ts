@@ -207,3 +207,31 @@ export function btnTextIn (item: EventTarget | Element | string) {
     ease: "sine.in",
   });
 };
+
+export function toggleTextExpand (item: EventTarget | Element | string) {
+  let el: Element | null | EventTarget = null;
+
+  if(typeof item === 'string'){
+    el = document.querySelector(item);
+  } else {
+    el = item as Element
+  }
+
+  if (!el) return;
+
+  (el as HTMLElement).style.opacity = '1';
+  (el as HTMLElement).style.position = '0, 200%';
+
+  const split = new SplitText(el as HTMLElement, {
+    type: "chars",
+    autoSplit: true,
+    deepSlice: true,
+  })
+
+  gsap.from(split.chars, {
+    yPercent: -200,
+    duration: 0.1,
+    stagger: 0.01,
+    ease: "sine.in",
+  });
+};

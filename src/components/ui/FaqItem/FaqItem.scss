@@ -1,0 +1,60 @@
+@use "../../../styles/_mixins.scss" as mixins;
+@use "../../../styles/_typography.scss" as typography;
+@use "../../../styles/_globals.scss" as globals;
+
+
+.faq__item {
+      background-color: globals.$senda-color-white-100;
+      padding: globals.$padding-general-010;
+      display: flex;
+      position: relative;
+      flex-direction: column;
+      width: calc(100% - 2 * globals.$padding-general-010);
+      border-bottom: 1px solid globals.$senda-color-black-050;
+      gap: globals.$gap-general-010;
+      // transition: globals.$transition-basic-fast-main ;
+      overflow: hidden;
+      height: (calc(100dvw * 0.021));
+      cursor: pointer;
+      
+      p{
+        pointer-events: none;
+      }
+      
+      .faq__item__question {
+        @include typography.desktop-title-h5;
+        color: globals.$senda-color-black-100;
+        max-width: 75%;
+        pointer-events: none;
+        // height: 100%
+      };
+      
+      .faq__item__answer {
+        @include typography.desktop-copy-c1;
+        color: globals.$senda-color-black-100;
+        max-width: 95%;
+        pointer-events: none;
+        height: 100%
+      };
+      
+      .faq__item__arrow {
+        @include mixins.flex-center;
+        position: absolute;
+        overflow: hidden;
+        top: globals.$padding-general-010;
+        right: globals.$padding-general-010;
+        height: 2dvw;
+        width: 2dvw;
+        rotate: 90deg;
+        pointer-events: none;
+        transition: globals.$transition-basic-fast-main ;
+        cursor: pointer;
+
+        img {
+          pointer-events: none;
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+        };
+      };
+    };
