@@ -10,7 +10,7 @@ export function addElementsScrollAnimations () {
 
 function homeExperienceTabsScrollAnimations () {
   const tabs = document.querySelectorAll('.home__experiences__tabs__tab');
-  if(tabs.length>=0) {
+  if(tabs && tabs.length>=0) {
 
   gsap.to(".home__experiences__tabs__tab", {
     yPercent: (i) => -50 + i * -10, // each item slightly higher than previous
@@ -40,7 +40,7 @@ function homeExperienceTabsScrollAnimations () {
 
 function aboutTabsScrollAnimations () {
   const tabs = document.querySelectorAll('.about__images__item');
-  if(tabs.length>=0) {
+  if(tabs && tabs.length>=0) {
 
   gsap.to(".about__images__item", {
     yPercent: (i) => -10 + i * -10, // each item slightly higher than previous
@@ -70,7 +70,7 @@ function aboutTabsScrollAnimations () {
 
 function aboutValuesTabsScrollAnimations () {
   const tabs = document.querySelectorAll('.about__values__value');
-  if(tabs.length>=0) {
+  if(tabs && tabs.length>=0) {
 
   gsap.to(".about__values__value", {
     yPercent: (i) => i * -25, // each item slightly higher than previous

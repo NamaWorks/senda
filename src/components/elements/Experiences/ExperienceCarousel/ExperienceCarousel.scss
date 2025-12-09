@@ -3,13 +3,18 @@
 @use "../../../../styles/_globals.scss" as globals;
 
 .carousel {
-  padding: globals.$padding-general-100;
   padding-bottom: calc(globals.$padding-general-100/2);
+  max-width: 100dvw;
+  overflow: hidden;
+  position: relative;
 
   .carousel__texts {
+    padding: globals.$padding-general-050 globals.$padding-general-100;
     @include mixins.flex-center;
     justify-content: space-between;
-    width: 100%;
+    position: relative;
+    z-index: 2;
+    // width: 100%;
 
     .carousel__texts__heading {
       .carousel__texts__heading__title {
@@ -34,14 +39,55 @@
   };
 
   .carousel__images {
-    @include mixins.flex-center;
+    flex-direction: row;
+    display: flex;
+    height: 45dvh;
+    flex-wrap: nowrap;
+    position: relative;
+    z-index: 1;
+    // left: calc(globals.$padding-general-100 * -1);
+    // overflow: hidden;
+    
+    .carousel__images__container {
+      @include mixins.flex-center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      
+      .carousel__images__image {
+        @include mixins.flex-center;
+        height: 45dvh;
+        width: 35dvw;
+        position: relative;
+        top: 0dvh;
+        overflow: hidden;
+        transition: globals.$transition-basic-main;
+  
+        img{
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      };
+
+      .selected {
+        height: 125%;
+        width: 75dvw;
+        position: relative;
+        // top: -22.5%;
+      }
+    };
+    
   };
 
   .carousel__location {
     @include mixins.flex-center;
     gap: globals.$padding-general-025;
     height: 25dvw;
-    padding: globals.$padding-general-050 0;
+    padding: globals.$padding-general-050 globals.$padding-general-100;
+    position: relative;
+    z-index: 2;
     
     .carousel__location__video__container {
       @include mixins.flex-center;
@@ -76,6 +122,7 @@
         @include typography.desktop-copy-c4;
         width: 85%;
         color: globals.$senda-color-black-100;
+        transition: globals.$transition-basic-main;
       };
       .carousel__location__container__copy {
         width: 45%;
@@ -83,11 +130,13 @@
         align-self: flex-end;
         @include typography.desktop-copy-c1;
         color: globals.$senda-color-black-100;
+        transition: globals.$transition-basic-main;
       };
     };
   };
 
   .carousel__itinerary {
+    padding: 0 globals.$padding-general-100;
     @include mixins.flex-center;
     // padding: 0 globals.$padding-general-0;
     gap: globals.$gap-general-050;
