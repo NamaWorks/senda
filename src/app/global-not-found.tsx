@@ -6,6 +6,8 @@ import "./layout.scss";
 import Button from "@/components/ui/Button/Button";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import Nav from "@/components/elements/Nav/Nav";
+import ExperiencesContextProvider from "@/utils/contexts/context_providers/ExperiencesContextProvider";
 
 export default function Custom404() {
 
@@ -13,8 +15,11 @@ export default function Custom404() {
 
   return (
     <>
+      <ExperiencesContextProvider>
       <html lang="en">
         <body className={`body`}>
+        <Nav/>
+          
           <main className="not-found">
             <div className="not-found__video__container">
               <video loop autoPlay muted playsInline width="720">
@@ -49,6 +54,7 @@ export default function Custom404() {
           </main>
         </body>
       </html>
+      </ExperiencesContextProvider>
     </>
   );
 }
