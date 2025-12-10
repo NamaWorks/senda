@@ -16,20 +16,20 @@ export const metadata: Metadata = {
 
 export default function RootLayout({children,}: Readonly<{children: React.ReactNode;}>) {
   return (
-  <AnimationsProvider>
-  <SmoothScrollProvider>
-  <ExperiencesContextProvider>
-  <ComponentsContextProvider>
     <html lang="en">
       <body className={`body`}>
-        <Nav/>
-          {children}
-        <Footer/>
+        <AnimationsProvider>
+        <SmoothScrollProvider>
+        <ExperiencesContextProvider>
+        <ComponentsContextProvider>
+          <Nav/>
+            {children}
+          <Footer/>
+        </ComponentsContextProvider>
+        </ExperiencesContextProvider>
+        </SmoothScrollProvider>
+        </AnimationsProvider>
       </body>
     </html>
-  </ComponentsContextProvider>
-  </ExperiencesContextProvider>
-  </SmoothScrollProvider>
-  </AnimationsProvider>
   );
 }

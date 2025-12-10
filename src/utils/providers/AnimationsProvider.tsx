@@ -47,3 +47,33 @@ export default function AnimationsProvider ({children}: {children: ReactNode})  
     </>
   )
 };
+
+
+
+// useEffect(() => {
+//   const onReady = () => {
+//     gsap.registerPlugin(ScrollTrigger, CustomEase);
+//     animateElements();
+
+//     let timeout: number | null = null;
+//     const observer = new MutationObserver(() => {
+//       if (timeout) window.clearTimeout(timeout);
+//       timeout = window.setTimeout(animateElements, 300);
+//     });
+
+//     observer.observe(document.body, {
+//       childList: true,
+//       subtree: true,
+//     });
+
+//     return () => {
+//       observer.disconnect();
+//       if (timeout) window.clearTimeout(timeout);
+//     };
+//   };
+
+//   if (document.readyState === "complete") onReady();
+//   else window.addEventListener("load", onReady);
+
+//   return () => window.removeEventListener("load", onReady);
+// }, []);
