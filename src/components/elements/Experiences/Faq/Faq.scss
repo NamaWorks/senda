@@ -10,6 +10,7 @@
   position: relative;
   top: 9dvw;
   background: linear-gradient(0deg, globals.$senda-color-white-200 90%,  globals.$senda-color-white-100 90%);
+  padding-bottom: 15dvw;
   // background-color: red;
 
   .faq__mountains {
@@ -18,19 +19,26 @@
     height: 100%;
     position: relative;
 
+    img {
+      width: 100%;
+      object-fit: cover
+    };
+
     div {
       @include mixins.flex-center;
       align-items: flex-end;
       width: 100dvw;
-      height: 250px;
+      // height: 250px;
       object-fit: cover;
       position: absolute;
-      top: -30dvh;
+      // top: -30dvh;
+      bottom: 100%
     };
 
     .faq__mountains__a {
       background: #2A7B9B;
       background: linear-gradient(0deg, globals.$senda-color-white-200 40%,  globals.$senda-color-white-100 40%);
+      top: -20dvw
     };
     
     .faq__mountains__b {
