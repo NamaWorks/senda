@@ -10,8 +10,9 @@ export function initPartnersHoverAnimation () {
         gsap.to(bgImage, {
           // scale: 1,
           width: '100%',
-          duration: .5,
-          ease: "power3.out",
+          height: '100%',
+          duration: .3,
+          ease: "power1.out",
         })
       })
 
@@ -20,8 +21,9 @@ export function initPartnersHoverAnimation () {
         gsap.to(bgImage, {
           // scale: 0,
           width: '0%',
-          duration: .5,
-          ease: "power3.in",
+          height: '0%',
+          duration: .3,
+          ease: "power1.in",
         })
       })
       addAnimatedElementTag(item);

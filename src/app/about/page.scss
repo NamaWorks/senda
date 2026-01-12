@@ -16,7 +16,7 @@ body {
 .about__hero {
   @include mixins.flex-center;
   padding: globals.$padding-general-100;
-  height: 100dvh;
+  height: 90dvh;
   .about__hero__container {
     z-index: 2;
 
