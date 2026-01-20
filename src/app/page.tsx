@@ -24,9 +24,9 @@ export default async function Home() {
 
           <div className="home__hero__top">
             <div className='home__hero__texts'>
-              <h2 className='home__hero__texts__preheading' >{homeData.hero.pre_h1}</h2>
-              <h1 className='home__hero__texts__heading' >{homeData.hero.heading_h1}</h1>
-              <h2 className='home__hero__texts__postheading' >{homeData.hero.post_h1}</h2>
+              <h2 className='home__hero__texts__preheading' data-animation='hero-paragraph'>{homeData.hero.pre_h1}</h2>
+              <h1 className='home__hero__texts__heading' data-animation='hero-paragraph'>{homeData.hero.heading_h1}</h1>
+              <h2 className='home__hero__texts__postheading' data-animation='hero-paragraph'>{homeData.hero.post_h1}</h2>
             </div>
             <div className="home__hero__square"></div>
           </div>
@@ -45,11 +45,12 @@ export default async function Home() {
 
         <section className="home__claim">
           <div className='home__claim__texts'>
-            <p className="home__claim__texts__coordinates">{homeData.claim.coordinates}</p>
-            <p className="home__claim__texts__text">
-              {homeData.claim.main_claim}
-              {/* pending to add the image span */}
-            </p>
+            <p className="home__claim__texts__coordinates" data-animation='hero-paragraph'>{homeData.claim.coordinates} </p>
+            <div className="home__claim__texts__text" data-animation='hero-paragraph'>
+              <span className='first-line-indent'></span>
+                {homeData.claim.main_claim}
+                {/* pending to add the image span */}
+            </div>
           </div>
         </section>
 
@@ -61,8 +62,8 @@ export default async function Home() {
         
         <section className="home__about">
           <div className="home__about__title">
-            <h2 className="home__about__title__heading-a">{homeData.about.heading_01}</h2>
-            <h2 className="home__about__title__heading-b">{homeData.about.heading_02}</h2>
+            <h2 className="home__about__title__heading-a" data-animation='hero-paragraph'>{homeData.about.heading_01}</h2>
+            <h2 className="home__about__title__heading-b" data-animation='hero-paragraph'>{homeData.about.heading_02}</h2>
           </div>
 
           <div className="home__about__founder">

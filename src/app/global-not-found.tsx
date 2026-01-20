@@ -38,7 +38,7 @@ export default function Custom404() {
           </div>
 
           <div className="not-found__copy">
-              <p className="not-found__texts__p">{`You’re off route — `}</p>
+              <p className="not-found__texts__p" data-animation='paragraph'>{`You’re off route — `}</p>
               <div className="not-found__copy__container">
                 <Button
                   copy={`#404`}
@@ -48,7 +48,7 @@ export default function Custom404() {
                   icon="right_arrow"
                   round={false}
                 />
-                <p className="not-found__texts__p">this path leads nowhere.</p>
+                <p className="not-found__texts__p" data-animation='paragraph'>this path leads nowhere.</p>
               </div>
             </div>
           </main>

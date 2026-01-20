@@ -40,7 +40,7 @@ export default function About() {
 
       <section className="about__hero">
         <div className="about__hero__container">
-          <p className="about__hero__text">
+          <p className="about__hero__text" data-animation='hero-paragraph'>
             {aboutData?.hero.heading}
           </p>
         </div>

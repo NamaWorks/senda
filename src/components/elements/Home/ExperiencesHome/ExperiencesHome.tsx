@@ -131,7 +131,7 @@ export default function ExperiencesHome () {
             return (
               <>
                 <div className="home__experiences__selected__texts">
-                  <p className="home__experiences__selected__heading">{heading}</p>
+                  <p className="home__experiences__selected__heading" data-animation='hero-paragraph'>{heading}</p>
                   <p className="home__experiences__selected__description" data-animation="paragraph">{description}</p>
                 </div>
                 <div className="home__experiences__selected__buttons">

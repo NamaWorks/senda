@@ -125,7 +125,7 @@ useEffect(() => {
               <p className="carousel__texts__heading__title" data-animation="paragraph" ref={headingTitleRef}>
                 {currentExperience?.acf.hero.heading}
               </p>
-              <p className="carousel__texts__heading__copy" ref={headingCopyRef}>
+              <p className="carousel__texts__heading__copy" ref={headingCopyRef} data-animation="paragraph">
                 {currentExperience?.acf.hero.description}
               </p>
             </div>

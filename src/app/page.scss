@@ -129,7 +129,12 @@
     .home__claim__texts__text {
       @include typography.desktop-copy-c3;
       color: globals.$senda-color-black-100;
-      text-indent: 50%;
+      // text-indent: 50%;
+
+      .first-line-indent {
+        display: inline-block;
+        width: 50%;
+      };
     };
   };
 };

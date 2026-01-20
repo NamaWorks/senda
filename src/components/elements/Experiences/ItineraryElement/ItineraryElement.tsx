@@ -29,7 +29,7 @@ export default function ItineraryElement({ data }: { data: {heading: string, des
       <div className="itinerary__element__title" data-animation="paragraph">
         <p>{data.heading}</p>
       </div>
-      <div className="itinerary__element__copy">
+      <div className="itinerary__element__copy" data-animation="paragraph">
         <p>{data.description}</p>
       </div>
      </div>
