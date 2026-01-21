@@ -80,8 +80,8 @@ export default function About() {
             Object.keys(aboutData?.values.items || {}).map((item, i)=>{
               return (
                 <div className="about__values__value" key={`value__${i}`}>
-                  <p className="value__index">{`${aboutData?.values.items[item as keyof typeof aboutData.values.items].index} \n`}</p>
-                  <p className="value__text">{aboutData?.values.items[item as keyof typeof aboutData.values.items].text}</p>
+                  <p className="value__index" data-animation='paragraph'>{`${aboutData?.values.items[item as keyof typeof aboutData.values.items].index} \n`}</p>
+                  <p className="value__text" data-animation='paragraph'>{aboutData?.values.items[item as keyof typeof aboutData.values.items].text}</p>
                 </div>
               )
             })

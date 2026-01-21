@@ -17,15 +17,17 @@ export function paragraphOut (item: EventTarget | Element | string) {
 
   const split = new SplitText(el as HTMLElement, {
     type: "words",
+    mask: "words",
+    wordsClass: "word++",
     autoSplit: true,
     deepSlice: true,
   })
 
   gsap.to(split.words, {
     opacity: 0,
-    xPercent: -15,
-    duration: 0.05,
-    stagger: 0.025,
+    yPercent: -120,
+    duration: 0.25,
+    stagger: 0.030,
     ease: "sine.in",
     scrollTrigger: {
       trigger: el,          
@@ -58,16 +60,22 @@ export function paragraphIn (item: EventTarget | Element | string) {
 
   const split = new SplitText(el as HTMLElement, {
     type: "words",
+    mask: "words",
+    wordsClass: "word++",
     autoSplit: true,
     deepSlice: true,
   })
 
   gsap.from(split.words, {
     opacity: 0,
-    xPercent: -15,
-    duration: 0.1,
-    stagger: 0.025,
-    ease: "sine.in",
+    yPercent: 120,
+    // xPercent: -100,
+    // scale:0.7,
+    // transformOrigin: "left top",
+    // letterSpacing: 8,
+    duration: 0.5,
+    stagger: 0.05,
+    ease: "sine.out",
     scrollTrigger: {
       trigger: el,          
       start: "top 90%",
@@ -92,15 +100,17 @@ export function titleOut (item: EventTarget | Element | string) {
 
   const split = new SplitText(el as HTMLElement, {
     type: "words",
+    mask: "words",
+    wordsClass: "word++",
     autoSplit: true,
     deepSlice: true,
   })
 
   gsap.to(split.words, {
     opacity: 0,
-    xPercent: -15,
-    duration: 0.05,
-    stagger: 0.025,
+    yPercent: -120,
+    duration: 0.25,
+    stagger: 0.030,
     ease: "sine.in",
     scrollTrigger: {
       trigger: el,          
@@ -133,16 +143,18 @@ export function titleIn (item: EventTarget | Element | string) {
 
   const split = new SplitText(el as HTMLElement, {
     type: "words",
+    mask: "words",
+    wordsClass: "word++",
     autoSplit: true,
     deepSlice: true,
   })
 
   gsap.from(split.words, {
     opacity: 0,
-    xPercent: -15,
-    duration: 0.1,
+    yPercent: 120,
+    duration: 0.5,
     stagger: 0.025,
-    ease: "sine.in",
+    ease: "sine.out",
     scrollTrigger: {
       trigger: el,          
       start: "top 90%",
